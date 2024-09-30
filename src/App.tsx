@@ -7,7 +7,7 @@ import { $http, setBearerToken } from "./lib/http";
 import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
 import { useUserStore } from "./store/user-store";
 import { uesStore } from "./store";
-import PlayOnYourMobile from "./pages/PlayOnYourMobile";
+// import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 import { useDebounce } from "@uidotdev/usehooks";
 import { toast } from "react-toastify";
 import useTelegramInitData from "./hooks/useTelegramInitData";
@@ -17,7 +17,7 @@ console.log({ webApp } , 'this is telegram webapp');
 const isDisktop = import.meta.env.DEV
   ? false
   : Telegram.WebApp.platform === "tdesktop";
-
+console.log(isDisktop)
 function App() {
   const userStore = useUserStore();
   const { levels, levelUp } = uesStore();
@@ -117,7 +117,7 @@ function App() {
     signIn().then(() => setShowSplashScreen(false));
   }, [user]);
 
-  if (!user || isDisktop) return <PlayOnYourMobile />;
+  // if (!user || isDisktop) return <PlayOnYourMobile />;
 
   if (showSplashScreen) return <SplashScreen />;
 

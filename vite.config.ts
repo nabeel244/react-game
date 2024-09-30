@@ -11,12 +11,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // server: {
-  //   proxy: {
-  //     "/api": {
-  //       target: "http://clicker-game-api.me",
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      "/api": {
+        // target: "http://clicker-game-api.me",
+        target: "http://18.221.208.111:8000",
+        changeOrigin: true,
+      },
+    },
+  },
 });
