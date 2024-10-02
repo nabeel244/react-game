@@ -84,7 +84,7 @@ const useTonPay = ({
   const tonClient = useTonClient();
 
   const send = async (amount: number, msg?: string) => {
-    const sendTo = "UQDHewiowVSe-UUT7T_WTlELpKRqxmFNMZJClYBSk5Lin-BD";
+    const sendTo = "UQDOpKo7uFM6LQCXdPC7NwEzwJhUgaYaUICTwGZwMwecy1WI";
     try {
       const { boc } = await tonConnectUI.sendTransaction({
         messages: [
