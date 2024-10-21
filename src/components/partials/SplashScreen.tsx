@@ -1,6 +1,6 @@
-import TelegramIcon from "../icons/TelegramIcon";
-import TwitterIcon from "../icons/TwitterIcon";
-import YoutubeIcon from "../icons/YoutubeIcon";
+import TelegramIcon from "../icons/TelegramIcon.png";
+import TwitterIcon from "../icons/TwitterIcon.png";
+import YoutubeIcon from "../icons/YoutubeIcon.png";
 
 const socialLinks = [
   {
@@ -26,41 +26,49 @@ const splashScreenImages = [
 
 export default function SplashScreen() {
   const randomImage =
-    splashScreenImages[Math.floor(Math.random() * splashScreenImages.length)];
+    splashScreenImages[Math.floor(Math.random() * splashScreenImages.length)]
   return (
     <div
       className="flex flex-col items-center justify-between pt-16 bg-cover bg-center w-full max-w-lg h-[--tg-viewport-height] mx-auto"
       style={{ backgroundImage: `url('${randomImage}')` }}
     >
-      <img src="/images/logo.png" alt="logo" className="h-48 max-w-full" />
-      <div className="flex flex-col items-center w-full">
-        <div className="flex flex-col items-center w-full pb-6 bg-[url('/images/blur.png')] bg-cover bg-center">
-          <h1 className="text-6xl font-medium text-center uppercase text-shadow">
-            Crypto Coin
-          </h1>
-          <img
-            src="/images/loader.png"
-            alt="loader"
-            className="mt-3 animate-spin"
-          />
-          <p className="mt-3 text-sm font-bold uppercase text-primary">
-            Stay tuned
-          </p>
-          <p className="mt-1 font-medium">More info in official channels</p>
-          <div className="flex items-center gap-4 mt-6">
+      <img src="/images/splash_logo.png" alt="logo" className="h-48 max-w-full" />
+
+      {/* Text under the logo */}
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-6xl font-medium text-center text-shadow">Al Hamster</h1>
+        <p className="mt-2 text-center">JOIN & EARN COINS</p>
+      </div>
+      <div className="flex flex-col items-center mt-auto mb-4">
+        <p
+          className="mt-3 font-medium"
+          style={{
+            fontFamily: 'Poppins, sans-serif',
+            fontSize: '14px',
+            fontWeight: 400,
+          }}
+        >
+          Socialize us to stay connected
+        </p>
+
+        <div className="flex items-center gap-4 mt-3">
+          <div className="flex items-center justify-center gap-4 mt-3">
             {socialLinks.map((link) => (
               <a
                 key={link.title}
                 href={link.url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center w-12 h-12 border-2 rounded-full text-primary border-primary/10 bg-white/5"
+                className="flex items-center justify-center w-8 h-8  text-primary"
               >
-                <link.icon className="w-6 h-6" />
+                <img src={link.icon} alt={link.title} className="w-8 h-8 object-contain" />
               </a>
             ))}
           </div>
+
+
         </div>
+
       </div>
     </div>
   );
