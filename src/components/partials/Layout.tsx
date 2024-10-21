@@ -7,7 +7,6 @@ import { PopupMessageType } from "@/types/PopupMessageType";
 import PopupMessageDialog from "../PopupMessageDialog";
 
 export default function Layout() {
-  console.log('we are now at this stage layout.tsx')
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
