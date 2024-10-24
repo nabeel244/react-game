@@ -1,4 +1,5 @@
 import React from "react";
+import './onBoardingStyle.css';
 
 interface PaginationBoxProps {
   title: string;
@@ -15,6 +16,7 @@ const PaginationBox: React.FC<PaginationBoxProps> = ({
   totalScreens,
   onDotClick,
 }) => {
+  
   return (
     <div
       className="w-full rounded-t-3xl p-6 shadow-lg border-t-2"
