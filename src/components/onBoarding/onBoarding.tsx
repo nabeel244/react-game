@@ -46,6 +46,12 @@ export default function OnBoarding() {
       backgroundImage: "/images/onboarding/onBoarding2.png",
       imageUrl: "/images/onboarding/group.png",
     },
+    {
+      title: "",
+      description: "",
+      backgroundImage: "/images/onboarding/giftCard.png",
+      imageUrl: "/images/onboarding/giftBox.png",
+    },
   ];
 
   const [currentScreenIndex, setCurrentScreenIndex] = useState<number>(0);
