@@ -136,55 +136,19 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
          Get your present
        </button>
      </div>
-        // <div
-        //   className={`relative w-full rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
-        //   style={{
-        //     background: "linear-gradient(180deg, #2B004E 0%, #08142B 76.28%)",
-        //     borderTopColor: "#6D00DA",
-        //   }}
-        // >
-        //   <div className="relative flex justify-center items-center">
-        //     <img src="./images/onboarding/giftAmount.png" alt="Gift Amount" className="block max-w-full h-auto" />
-
-        //     <span className="absolute text-white text-3xl font-bold" style={{ top: '60%', left: '47%' }}>
-        //       10,000
-        //     </span>
-        //   </div>
-        // </div>
       ) : (
         <>
           {/* Pagination Box */}
-          <div className={`w-full absolute bottom-0 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
+          <div className={`absolute w-full bottom-0 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
             <PaginationBox
               title={title}
               description={description}
               currentScreenIndex={currentScreenIndex}
               totalScreens={totalScreens}
               onDotClick={handleDotClick} // Trigger animation on dot click
+              onNext={handleNextClick}
             />
           </div>
-
-          {/* Next Button (also slides up) */}
-          {isBoxVisible && (
-            <button
-              className={`absolute bottom-${currentScreenIndex === 5 ? '4' : '8'} ${currentScreenIndex === 5 ? 'transform -translate-x-1/2 rounded-full' : 'right-20 rounded-lg'} text-white p-2 px-6 slide-up`}
-              onClick={handleNextClick}
-              style={{
-                backgroundImage: currentScreenIndex === 5
-                  ? "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)"
-                  : "none",
-                backgroundColor: currentScreenIndex !== 5 ? "#6D00DA" : "none",
-                width: currentScreenIndex === 5 ? "calc(100% - 40px)" : "auto", // Adjust width based on available space
-                maxWidth: currentScreenIndex === 5 ? "500px" : "auto",
-                height: currentScreenIndex === 5 ? "10vh" : "auto",
-                minHeight: currentScreenIndex === 5 ? "50px" : "auto",
-                maxHeight: currentScreenIndex === 5 ? "70px" : "auto",
-                margin: "0 auto", // Center the button
-              }}
-            >
-              {currentScreenIndex === 5 ? "Play" : "Next"}
-            </button>
-          )}
         </>
       )}
     </div>
