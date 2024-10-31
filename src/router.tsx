@@ -13,8 +13,8 @@ import OnBoarding from "./components/onBoarding/onBoarding.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <Layout />,
-    element: <OnBoarding />,
+    element: <Layout />,
+    // element: <OnBoarding />,
 
     children: [
       {

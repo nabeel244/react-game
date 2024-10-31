@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
 import levelConfig from "@/config/level-config";
+import Header from "@/components/Header";
 
 export default function Missions() {
   const user = useUserStore();
@@ -30,16 +31,22 @@ export default function Missions() {
   });
 
   return (
-    <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-      <div className="flex flex-col flex-1 w-full h-full px-6 pb-24 mt-12 modal-body">
-        <UserGameDetails className="mt-4" />
+    // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
+    <div className="flex flex-col justify-end bg-cover flex-1" 
+      style={{
+        background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
+      }}
+    >
+      <div className="flex flex-col flex-1 w-full h-full px-6 pb-24 modal-body">
+      <Header />
+        {/* <UserGameDetails className="mt-4" /> */}
         <div className="flex items-center justify-center mt-10 space-x-1 text-gradient">
           <img
             src="/images/coins.png"
             alt="coins"
             className="object-contain w-14 h-14"
           />
-          <span className="text-3xl font-bold">
+          <span className="text-3xl font-bold mt-3">
             {Math.floor(user.balance)?.toLocaleString()}
           </span>
         </div>
@@ -94,13 +101,15 @@ export default function Missions() {
                   >
                     <div className="flex items-start flex-1 space-x-3">
                       <img
-                        src={mission.image}
+                        // src={mission.image}
+                        src='/images/missions.png'
                         alt={mission.name}
                         className="object-contain w-16 h-16"
                       />
-                      <div className="flex flex-col">
-                        <p className="text-[10px] font-bold">{mission.name}</p>
-                        <p className="mt-1 text-[10px] font-medium">
+                      <div className="flex flex-col ">
+                        <p className="text-[10px]">{mission.name}</p>
+                        <div className="bg-gradient-to-r from-[#03F6F4] to-[#37BBFE] rounded-md p-1 mt-1">
+                        <p className=" text-[10px] font-medium text-black">
                           Profit per hour
                         </p>
                         <Price
@@ -108,15 +117,16 @@ export default function Missions() {
                             mission.production_per_hour ||
                             `+${mission.next_level?.production_per_hour || 0}`
                           }
-                          className="mt-2 text-[10px]"
+                          className=" text-[10px] text-black"
                         />
+                        </div>
                       </div>
                     </div>
                     {mission.next_level && (
-                      <div className="pt-3 mt-3 border-t border-dashed border-white/10">
+                      <div className="pt-3 mt-3 border-t border-solid border-white/5 border-[#03F6F4]">
                         <div className="flex items-center space-x-3">
                           <p className="w-16 text-xs font-bold">
-                            LVL {mission.next_level?.level}
+                            LEVEL {mission.next_level?.level}
                           </p>
                           {mission.required_user_level &&
                           mission.required_user_level > user.level!.level ? (

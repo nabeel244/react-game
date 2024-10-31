@@ -13,9 +13,9 @@ export default function Price({ amount, className, ...props }: Props) {
       <img
         src="/images/coin.png"
         alt="coin"
-        className="object-contain w-5 h-5"
+        className="object-contain w-5 h-5 "
       />
-      <span className="font-bold">{amount}</span>
+      <span className="font-bold mt-1">{amount}</span>
     </div>
   );
 }

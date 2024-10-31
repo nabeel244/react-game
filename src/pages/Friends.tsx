@@ -36,16 +36,35 @@ export default function Friends() {
   });
 
   return (
-    <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-      <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-12 modal-body">
-        <h1 className="text-2xl font-bold text-center uppercase">Friends</h1>
-        <p className="mt-2.5 font-medium text-center">
-          You and your friend will receive bonuses.
+    // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
+    <div className="flex flex-col justify-end bg-cover flex-1"
+      style={{
+        background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
+      }}
+    >
+      <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 modal-body">
+        <div className="flex flex-row items-center justify-center text-center space-x-2">
+          <img src="/images/friends_group.png" alt="Invite Friends" className="w-8" />
+          <h1 className="text-2xl font-bold uppercase">Invite Friends!</h1>
+        </div>
+
+        <p className="mt-2.5 font-small text-center text-gray-400">
+          You and your friend will receive bonuses
         </p>
-        <div className="mt-4 space-y-2">
-          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white/10 rounded-xl">
+        <div className="mt-4 rounded-xl"
+          style={{
+            borderBottom: '1px solid #00FFFF',
+            borderTop: '1px solid #670EAF',
+          }}
+        >
+
+          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white/5 rounded-tl-lg rounded-tr-lg"
+            style={{
+              borderBottom: '0.25px solid #00FFFF',
+            }}
+          >
             <img
-              src="/images/chest.png"
+              src="/images/invite_friend_gift.png"
               alt="chest"
               className="object-contain w-9 h-9 mix-blend-screen"
             />
@@ -57,16 +76,17 @@ export default function Friends() {
                   alt="coin"
                   className="object-contain w-5 h-5"
                 />
-                <span className="font-bold text-primary">
+                <span className="font-bold text-primary pt-1">
                   +{referral.base.welcome.toLocaleString()}
                 </span>
-                <span className="text-sm">for you and your friend</span>
+                <span className="text-sm text-gray-500">for you and your friend</span>
               </div>
             </div>
           </button>
-          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white/10 rounded-xl">
+          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white/5 "
+          >
             <img
-              src="/images/chest.png"
+              src="/images/telegram_invite_friend.png"
               alt="chest"
               className="object-contain w-9 h-9 mix-blend-screen"
             />
@@ -78,29 +98,31 @@ export default function Friends() {
                   alt="coin"
                   className="object-contain w-5 h-5"
                 />
-                <span className="font-bold text-primary">
+                <span className="font-bold text-primary pt-1">
                   +{referral.premium.welcome.toLocaleString()}
                 </span>
-                <span className="text-sm">for you and your friend</span>
+                <span className="text-sm text-gray-500">for you and your friend</span>
               </div>
             </div>
           </button>
+
         </div>
         <div className="relative flex-1">
           <div className="absolute inset-0 w-full h-[calc(100%-1rem)] py-6 mt-4 overflow-y-scroll">
             {!showMoreBonuses ? (
-              <div className="text-center">
+              <div className="text-center flex flex-row justify-center">
                 <button
-                  className="rounded-full border-2 border-[#FFDAA3]/10 text-[#FFDAA3] text-xs font-bold py-2.5 px-4"
+                  className="text-[#03F6F4] text-xs font-bold px-4"
                   onClick={() => setShowMoreBonuses((value) => !value)}
                 >
-                  More bonuses
+                  More Bonuses
                 </button>
+                <span className="text-white">➔</span>
               </div>
             ) : (
               <>
                 <p
-                  className="mt-8 text-sm font-bold uppercase"
+                  className="text-[#03F6F4] mt-8 text-sm font-bold uppercase"
                   onClick={() => setShowMoreBonuses((value) => !value)}
                 >
                   Bonus for leveling up
@@ -160,12 +182,15 @@ export default function Friends() {
                 </div>
               </>
             )}
-            <p className="mt-8 text-sm font-bold uppercase">
+
+            <p className="mt-8 text-sm uppercase flex flex-row">
               List of your friends{" "}
               {referredUsers.data?.meta
                 ? `(${referredUsers.data?.meta.total})`
                 : null}
+              <img src="/images/refresh_friend_list.png" className="ml-2" />
             </p>
+
             {referredUsers.isLoading ? (
               <div className="flex items-center justify-center w-full h-14">
                 <div className="w-5 h-5 border-2 border-t-[#D9D9D9]/10 rounded-full border-t animate-spin"></div>
@@ -175,19 +200,19 @@ export default function Friends() {
                 {referredUsers.data.data.map((item, key) => (
                   <div
                     key={key}
-                    className="flex items-center justify-between px-4 py-3 bg-white/10 rounded-xl"
+                    className="flex items-center justify-between px-4 py-3 bg-white/5 rounded-xl"
                   >
                     <div className="flex items-center gap-2">
                       <img
                         src="/images/avatar.png"
                         alt="avatar"
-                        className="object-contain w-8 h-8 rounded-full"
+                        className="object-contain w-8 h-8"
                       />
                       <div>
                         <p className="text-sm font-medium">
                           {item.first_name} {item.last_name}
                         </p>
-                        <p className="text-xs">{item.level?.name}</p>
+                        <p className="text-xs text-gray-400">{item.level?.name}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -204,6 +229,7 @@ export default function Friends() {
                 ))}
               </div>
             ) : (
+           
               <div className="flex items-center justify-center px-4 mt-4 border-2 border-dashed rounded-xl border-white/10 h-14">
                 <p className="text-xs font-medium text-center text-white/30">
                   You didn’t invite anyone yet
@@ -213,24 +239,27 @@ export default function Friends() {
           </div>
         </div>
         <div className="flex gap-3 mt-4">
+       
           <Button
-            className="flex-shrink-0"
-            onClick={() => {
-              copy(referralLink);
-              toast.success("Referral link copied to clipboard");
-            }}
-          >
-            <CopyIcon className="w-5 h-5" />
-          </Button>
-          <Button
-            className="flex-1"
+            className="flex-1 items-center justify-center px-6 py-3 rounded-full text-white font-semibold text-base bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md"
             onClick={() =>
               Telegram.WebApp.openTelegramLink(
                 `https://t.me/share/url?text=${shareMessage}&url=${referralLink}`
               )
             }
           >
+
+            <img src="/images/invite_friend_button.png" alt="Invite Icon" className="w-5 h-5 mr-2" />
             Invite a friend
+          </Button>
+          <Button
+            className="flex bg-gradient-to-r from-[#03F6F4] to-[#03F6F4] rounded-full"
+            onClick={() => {
+              copy(referralLink);
+              toast.success("Referral link copied to clipboard");
+            }}
+          >
+            <img src="/images/copy_icon.png" alt="" />
           </Button>
         </div>
       </div>
