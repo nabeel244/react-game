@@ -1,5 +1,4 @@
-import { Loader2Icon } from "lucide-react";
-// import loader from "/images/loader_animation.gif";
+
 export default function LoadingPage() {
   return (
     // <div className="flex flex-col justify-end bg-[url('/images/bg.png')] bg-cover flex-1">

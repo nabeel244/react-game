@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
-import CloseIcon from "../icons/CloseIcon";
+// import CloseIcon from "../icons/CloseIcon";
 import { useBlocker } from "react-router-dom";
 
 export type DrawerProps = {

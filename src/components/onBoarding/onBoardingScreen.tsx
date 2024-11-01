@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PaginationBox from "./paginationBox";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 interface OnBoardingScreenProps {
   title: string;
@@ -29,7 +29,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
 }) => {
   const [isBoxVisible, setIsBoxVisible] = useState(false); // Start hidden by default
   const [isImageVisible, setIsImageVisible] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   useEffect(() => {
     // Show the pagination box and Next/Play button after 0.5 seconds
     const timer = setTimeout(() => {

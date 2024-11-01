@@ -1,15 +1,14 @@
 import ListItem from "@/components/ListItem";
-import CheckIcon from "@/components/icons/CheckIcon";
+// import CheckIcon from "@/components/icons/CheckIcon";
 import Drawer from "@/components/ui/drawer";
 import { useTonConnect } from "@/hooks/useTonConnect";
 import useTonPay from "@/hooks/useTonPay";
 import { CHAIN, useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
 import { useCopyToClipboard } from "@uidotdev/usehooks";
-import { CopyIcon, Loader2Icon, Wallet2Icon, XIcon } from "lucide-react";
+import {  Loader2Icon, Wallet2Icon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import levelConfig from "@/config/level-config";
-import { useUserStore } from "@/store/user-store";
+// import { useUserStore } from "@/store/user-store";
 import { Button } from "@/components/ui/button";
 
 export default function Wallet() {
@@ -19,7 +18,7 @@ export default function Wallet() {
   const tonAddress = useTonAddress();
   const { connected: isConnected, network } = useTonConnect();
 
-  const user = useUserStore();
+  // const user = useUserStore();
 
   const tonPay = useTonPay({
     onSuccess: () => toast.success("Your transaction has been completed"),

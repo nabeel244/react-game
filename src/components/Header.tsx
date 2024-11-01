@@ -1,5 +1,5 @@
 import { useUserStore } from "@/store/user-store";
-import { cn, compactNumber } from "@/lib/utils";
+import { compactNumber } from "@/lib/utils";
 
 export default function Header() {
     const user = useUserStore();
