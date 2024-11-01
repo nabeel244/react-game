@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MissionDrawer from "@/components/MissionDrawer";
 import Price from "@/components/Price";
-import UserGameDetails from "@/components/UserGameDetails";
+// import UserGameDetails from "@/components/UserGameDetails";
 import { $http } from "@/lib/http";
 import { cn, compactNumber } from "@/lib/utils";
 import { uesStore } from "@/store";
@@ -10,7 +10,7 @@ import { Mission } from "@/types/MissionType";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
-import levelConfig from "@/config/level-config";
+// import levelConfig from "@/config/level-config";
 import Header from "@/components/Header";
 
 export default function Missions() {

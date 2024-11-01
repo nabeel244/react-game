@@ -2,8 +2,8 @@ import UserTap from "../components/UserTap";
 import { useUserStore } from "../store/user-store";
 import { Link } from "react-router-dom";
 import UserGameDetails from "@/components/UserGameDetails";
-import levelConfig from "@/config/level-config";
-import { cn, compactNumber } from "@/lib/utils";
+// import levelConfig from "@/config/level-config";
+// import { cn, compactNumber } from "@/lib/utils";
 import { uesStore } from "@/store";
 import Header from "@/components/Header";
 
