@@ -7,11 +7,14 @@ import Earn from "./pages/Earn";
 import Friends from "./pages/Friends";
 import Missions from "./pages/Missions";
 import Wallet from "./pages/Wallet";
+import SplashScreen from "./components/partials/SplashScreen";
+import OnBoarding from "./components/onBoarding/onBoarding.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    // element: <Layout />,
+    element: <OnBoarding />,
 
     children: [
       {

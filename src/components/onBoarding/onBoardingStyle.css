@@ -1,0 +1,87 @@
+/* Define custom animations for fade-in up */
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Starts slightly below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Ends in place */
+    }
+  }
+  
+  /* Define custom animation for scaling up the image from inside */
+  @keyframes scaleUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.8); /* Start smaller inside the screen */
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1); /* End at normal size */
+    }
+  }
+  
+  /* Apply the scale-up animation to the image */
+  .scale-up {
+    animation: scaleUp 1s ease-out forwards;
+  }
+  
+  /* Apply the fade-in-up animation */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Start with the icon hidden */
+  }
+  
+  /* Staggered animation delays for icons */
+  .fade-in-up-delay-1 {
+    animation-delay: 0.3s;
+  }
+  
+  .fade-in-up-delay-2 {
+    animation-delay: 0.6s;
+  }
+  
+  .fade-in-up-delay-3 {
+    animation-delay: 0.9s;
+  }
+  
+  .fade-in-up-delay-4 {
+    animation-delay: 1.2s;
+  }
+
+  
+/* Slide-up animation for both pagination box and next button */
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.hidden-box {
+  transform: translateY(80%);
+}
+.slide-up {
+  animation: slideUpFromBottom 0.5s ease-out forwards;
+}
+   /* end pagination animation  */
+   
+   /* fade in at image  */
+   @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Class to trigger the fade-in effect */
+  .fade-in-animation {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+/* end fade in at image    */
+
+

@@ -13,7 +13,6 @@ import { toast } from "react-toastify";
 import useTelegramInitData from "./hooks/useTelegramInitData";
 
 const webApp = window?.Telegram.WebApp;
-console.log({ webApp } , 'this is telegram webapp');
 const isDisktop = import.meta.env.DEV
   ? false
   : Telegram.WebApp.platform === "tdesktop";
