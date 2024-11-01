@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 // import { useUserStore } from "@/store/user-store";
-
+import './userGameDetailStyle.css'
 export default function UserGameDetails({
   className,
   ...props
@@ -15,7 +15,7 @@ export default function UserGameDetails({
     }}
     {...props}
   >
-    <div className="flex-1 flex flex-col items-center justify-center p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl"
+    <div className="flex-1 flex flex-col items-center justify-center p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in"
     style={{
       borderLeft: '1px solid #00FFFF',
     }}>
@@ -25,21 +25,21 @@ export default function UserGameDetails({
       <p className="text-gray-400 text-xs mt-1">20:10 hrs</p>
       </div>
     </div>
-    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl">
+    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
         <img className="object-contain" src="/images/cipher.png" />{" "}
       <p className="text-[10px] pt-2">Daily Cipher</p>
       <div className="inline-flex items-center space-x-1.5 text-white font-bold">
       <p className="text-gray-400 text-xs mt-1">20:10 hrs</p>
       </div>
     </div>
-    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl">
+    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
         <img className="object-contain" src="/images/combo.png" />{" "}
       <p className="text-[10px] pt-2">Daily Combo</p>
       <div className="inline-flex items-center space-x-1.5 text-white font-bold">
       <p className="text-gray-400 text-xs mt-1">20:10 hrs</p>
       </div>
     </div>
-    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl" style={{
+    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in" style={{
       borderRight: '1px solid #00FFFF', // Left border color for the left half
     }}>
         <img className="object-contain" src="/images/mini_game.png" />{" "}
