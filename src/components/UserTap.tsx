@@ -87,7 +87,8 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
           onPointerUp={tabMe}
         >
           <img
-            src={levelConfig.frogs[user.level?.level || 1]}
+            // src={levelConfig.frogs[user.level?.level || 1]}
+            src='/images/tap_to_click.png'
             alt="level image"
             className="object-contain max-w-full w-80 h-80"
             style={{ filter: levelConfig.filter[user.level?.level || 1] }}
@@ -109,7 +110,7 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center space-x-2">
           <img
-            src="/images/coin.png"
+            src="/images/flash.png"
             alt="coin"
             className="object-contain w-8 h-8"
           />
@@ -121,13 +122,13 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
           to={"/boost"}
           className="flex items-center space-x-2 text-sm font-bold"
         >
-          <span className="text-xs font-bold">Boost</span>
 
           <img
             src="/images/boost.png"
             alt="boost"
             className="object-contain w-8 h-8"
           />
+          <span className="text-xs font-bold">Boost</span>
         </Link>
       </div>
     </div>

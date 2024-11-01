@@ -10,6 +10,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import levelConfig from "@/config/level-config";
 import { useUserStore } from "@/store/user-store";
+import { Button } from "@/components/ui/button";
 
 export default function Wallet() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -32,24 +33,30 @@ export default function Wallet() {
   // }, [tonAddress]);
 
   return (
-    <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-      <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-12 modal-body">
+    // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
+    <div className="flex flex-col justify-end bg-cover flex-1"
+    style={{
+      background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
+    }}
+    >
+      <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 modal-body">
         <img
-          src="/images/toncoin.png"
+          src="/images/aridrop.png"
           alt="toncoin"
           className="object-contain w-32 h-32 mx-auto"
         />
         <h1 className="mt-4 text-2xl font-bold text-center uppercase">
-          TON Wallet
+        Airdrop task
         </h1>
-        <p className="mt-2.5 font-medium text-center">
-          Connect your TON wallet
+        <p className="mt-2.5 font-small text-center text-gray-400">
+        Listing is on its way. Tasks will appear below. Complete them to participate in the Airdrop
         </p>
 
         <div className="mt-4 space-y-2">
           <ListItem
             title={"Pay"}
-            image="/images/wallet.png"
+            image="/images/connect_wallet.png"
+            style={{ backgroundColor: '#6D00DA' }}
             onClick={async () => {
               if (network !== CHAIN.MAINNET) {
                 toast.error("Please switch to mainnet");
@@ -60,9 +67,16 @@ export default function Wallet() {
           />
           <ListItem
             title={"Connect your TON Wallet"}
-            image="/images/wallet.png"
+            image="/images/connect_wallet.png"
             onClick={() => setOpenDrawer(true)}
-            action={isConnected && <CheckIcon className="text-green-500" />}
+            style={{ backgroundColor: '#6D00DA' }}
+            // action={isConnected && <CheckIcon className="text-green-500" />}
+            action = {
+              isConnected ? 
+              (
+                <img src="/images/task_completed.png" alt="checked" />
+                    ) : <img src="/images/arrow_right.png" alt="checked" />
+            }
           />
         </div>
       </div>
@@ -77,7 +91,7 @@ export default function Wallet() {
       <Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
         <div className="mb-4">
           <img
-            src={"/images/wallet.png"}
+            src={"/images/connect_wallet.png"}
             alt={"wallet"}
             className="object-contain mx-auto w-28 h-28"
           />
@@ -93,33 +107,63 @@ export default function Wallet() {
             : "Connect your crypto wallet. If you don't have one, create one in your Telegram account"}
         </p>
         {isConnected ? (
-          <div className="flex gap-2">
-            <button
-              className="bg-[#ffffff1a] text-[#999a9c] rounded-xl text-sm px-4 h-11 flex items-center"
-              onClick={() => tonConnectUI.disconnect()}
-            >
-              <XIcon className="w-6 h-6" />
-            </button>
-            <button
-              className="flex-1 bg-[#ffffff1a] text-[#999a9c] rounded-xl text-sm px-4 h-11 flex items-center"
-              onClick={() => {
-                copy(tonAddress);
-                toast.success("Copied to clipboard");
-              }}
-            >
-              <Wallet2Icon className="w-6 h-6 mr-2" />
-              <span className="font-semibold text-white">
-                {tonAddress.slice(0, 8)}...
-                {tonAddress.slice(-8, tonAddress.length)}
-              </span>
-              <div className="ml-auto">
-                <CopyIcon className="w-5 h-5" />
-              </div>
-            </button>
-          </div>
+           <>
+           <div className="flex gap-2">
+           <button
+             className="flex-1 bg-[#ffffff1a] text-[#999a9c] rounded-full text-sm px-4 h-11 flex items-center"
+           >
+             <span className="font-semibold text-white">
+               {tonAddress.slice(0, 8)}...
+               {tonAddress.slice(-8, tonAddress.length)}
+             </span>
+          
+           </button>
+           <Button
+             className="flex bg-gradient-to-r from-[#03F6F4] to-[#03F6F4] rounded-full"
+             onClick={() => {
+               copy(tonAddress);
+               toast.success("Copied to clipboard");
+             }}
+           >
+             <img src="/images/copy_icon.png" alt="" />
+           </Button>
+           </div>
+           <button
+             className="flex items-center justify-center py-0 px-3 mt-2 font-bold h-11 text-sm w-full bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full text-white"
+             onClick={() => tonConnectUI.disconnect()}
+           >
+             Disconnect Wallet
+           </button>
+           </>
+          // <div className="flex gap-2">
+          //   <button
+          //     className="bg-[#ffffff1a] text-[#999a9c] rounded-xl text-sm px-4 h-11 flex items-center"
+          //     onClick={() => tonConnectUI.disconnect()}
+          //   >
+          //     <XIcon className="w-6 h-6" />
+          //   </button>
+          //   <button
+          //     className="flex-1 bg-[#ffffff1a] text-[#999a9c] rounded-xl text-sm px-4 h-11 flex items-center"
+          //     onClick={() => {
+          //       copy(tonAddress);
+          //       toast.success("Copied to clipboard");
+          //     }}
+          //   >
+          //     <Wallet2Icon className="w-6 h-6 mr-2" />
+          //     <span className="font-semibold text-white">
+          //       {tonAddress.slice(0, 8)}...
+          //       {tonAddress.slice(-8, tonAddress.length)}
+          //     </span>
+          //     <div className="ml-auto">
+          //       <img src="/images/connect_ton_icon.png" alt="" />
+          //       {/* <CopyIcon className="w-5 h-5" /> */}
+          //     </div>
+          //   </button>
+          // </div>
         ) : (
+         
           <button
-            className="flex items-center justify-center py-0 px-3 rounded-xl font-bold h-11 text-sm w-full bg-[linear-gradient(98deg,#35a6eb_3.58%,#309adb_101.32%)]"
+            className="flex items-center justify-center py-0 px-3 font-bold h-11 text-sm w-full bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full text-white"
             onClick={() => {
               tonConnectUI.openModal();
               setOpenDrawer(false);

@@ -3,7 +3,9 @@ import { useUserStore } from "../store/user-store";
 import { Link } from "react-router-dom";
 import UserGameDetails from "@/components/UserGameDetails";
 import levelConfig from "@/config/level-config";
+import { cn, compactNumber } from "@/lib/utils";
 import { uesStore } from "@/store";
+import Header from "@/components/Header";
 
 export default function Home() {
   const user = useUserStore();
@@ -12,29 +14,20 @@ export default function Home() {
     <div
       className="flex-1 px-5 pb-20 bg-center bg-cover"
       style={{
-        backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,
+        // backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,
+        background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
       }}
     >
-      <header className="flex items-center justify-between mt-4">
-        <div className="flex items-center gap-2 px-3 py-2 border-2 rounded-full bg-black/20 border-white/10">
-          <img
-            src="/images/avatar.png"
-            alt="user-avatar"
-            className="object-cover w-8 h-8 rounded-full"
-          />
-          <p className="text-sm font-medium uppercase">
-            {user?.first_name} {user?.last_name}
-          </p>
-        </div>
-      </header>
-      <UserGameDetails className="mt-6" />
-      <div className="flex mt-6 space-x-1.5 justify-center items-center select-none">
+      <Header />
+   
+      <UserGameDetails className="mt-5" />
+      <div className="flex mt-5 space-x-1.5 justify-center items-center select-none">
         <img
           src="/images/coins.png"
           alt="coins"
-          className="object-contain w-20 h-20"
+          className="object-contain w-15 h-15"
         />
-        <span className="text-3xl font-bold text-gradient">
+        <span className="text-3xl mt-3 font-bold text-gradient">
           {Math.floor(user.balance)?.toLocaleString()}
         </span>
       </div>
@@ -54,13 +47,23 @@ export default function Home() {
           </div>
         </Link>
         <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full mt-2 h-4 w-full">
+  <div
+    className="h-full"
+    style={{
+      width: `${(user?.balance! / user?.level!?.to_balance) * 100}%`,
+      background: 'linear-gradient(90deg, #03F6F4 0%, #6D00DA 45%, #AC5AFF 100%)', // Apply the gradient
+    }}
+  ></div>
+</div>
+
+        {/* <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full mt-2 h-4 w-full">
           <div
             className="bg-[linear-gradient(180deg,#FBEDE0_0%,#F7B87D_21%,#F3A155_52%,#E6824B_84%,#D36224_100%)] h-full"
             style={{
               width: `${(user?.balance! / user?.level!?.to_balance) * 100}%`,
             }}
           ></div>
-        </div>
+        </div> */}
       </div>
       <UserTap />
     </div>

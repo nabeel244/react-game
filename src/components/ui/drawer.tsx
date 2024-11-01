@@ -24,12 +24,18 @@ export default function Drawer({ hideClose, children, ...props }: DrawerProps) {
     <DrawerPrimitive.Root {...props}>
       <DrawerPrimitive.Portal>
         <DrawerPrimitive.Overlay className="fixed inset-0 bg-[#272a2fb3]" />
-        <DrawerPrimitive.Content className="fixed mt-24 z-[99] rounded-t-[40px] bottom-0 left-0 right-0 ">
+        <DrawerPrimitive.Content className="fixed mt-24 z-[99] rounded-t-[40px] bottom-0 left-0 right-0 "
+        style={{
+          background: 'linear-gradient(180deg, #2D033B 0%, #0F0D3F 100%)',
+          borderTop: '1px solid #670EAF',
+        }}
+        >
           <div className="overflow-y-auto modal-body max-h-[calc(100vh-6rem)]">
             {!hideClose && (
               <DrawerPrimitive.Close>
                 <div className="absolute right-5 top-5 text-[#4e4f50] transition-all hover:text-[#8b8e93]">
-                  <CloseIcon className="text-white w-7 h-7" />
+                  <img src="/images/close_icon.png" alt="close" />
+                  {/* <CloseIcon className="text-white w-7 h-7" /> */}
                 </div>
               </DrawerPrimitive.Close>
             )}

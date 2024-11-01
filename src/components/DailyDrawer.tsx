@@ -37,8 +37,8 @@ export default function DailyDrawer({ ...props }: DrawerProps) {
   });
   return (
     <Drawer {...props}>
-      <img src="/images/coins.png" alt="coins" className="mx-auto h-28" />
-      <h2 className="mt-6 text-2xl font-bold text-center">Daily Reward</h2>
+      <img src="/images/daily_award.png" alt="coins" className="mx-auto h-28" />
+      <h2 className="mt-6 text-2xl font-bold text-center">Daily Rewards</h2>
       <p className="mt-2.5 text-center font-medium">
         Acquire coins for logging into the game daily without skipping
       </p>
@@ -48,7 +48,8 @@ export default function DailyDrawer({ ...props }: DrawerProps) {
             key={key}
             className={cn(
               "flex flex-col border-2 border-transparent items-center bg-white/10 rounded-xl opacity-40 py-2.5 px-4",
-              item.completed && "opacity-100 border-[#27D46C] bg-[#27D46C]/20",
+              // item.completed && "opacity-100 border-[#27D46C] bg-[#27D46C]/20 ",
+              item.completed && "opacity-100 border-[#27D46C] bg-[#27D46C]/20 bg-[#6DC56D]",
               item.available && !item.completed && "opacity-100 border-primary"
             )}
           >
@@ -61,7 +62,8 @@ export default function DailyDrawer({ ...props }: DrawerProps) {
             <p
               className={cn(
                 "font-bold text-primary",
-                item.completed && "text-[#27D46C]"
+                // item.completed && "text-[#27D46C]"
+                item.completed && "text-white"
               )}
             >
               {compactNumber(item.reward_coins)}
@@ -70,7 +72,7 @@ export default function DailyDrawer({ ...props }: DrawerProps) {
         ))}
       </div>
       <Button
-        className="w-full mt-6"
+        className="w-full mt-6 bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full text-white"
         disabled={
           !dailyTasks.data?.some((item) => item.available && !item.completed) ||
           claimTaskMutation.isPending ||
@@ -81,7 +83,7 @@ export default function DailyDrawer({ ...props }: DrawerProps) {
         {claimTaskMutation.isPending && (
           <Loader2Icon className="w-6 h-6 mr-2 animate-spin" />
         )}
-        Claim
+        Claim Reward
       </Button>
     </Drawer>
   );

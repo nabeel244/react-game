@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import OnBoardingScreen from "./onBoardingScreen";
 
 interface Screen {
@@ -7,8 +7,11 @@ interface Screen {
   backgroundImage: string;
   imageUrl: string;
 }
-
-export default function OnBoarding() {
+interface OnBoardingProps {
+  onComplete: () => void;
+}
+// export default function OnBoarding() {
+  const OnBoarding: React.FC<OnBoardingProps> = ({ onComplete }) => {
   const screens: Screen[] = [
     {
       title: "Tap and earn coins",
@@ -69,8 +72,11 @@ export default function OnBoarding() {
   };
 
   const handleSkip = () => {
+    onComplete();
     console.log("Skip button clicked, navigate to home!");
-    // Skip the onboarding and navigate to home
+  };
+  const handleComplete = () => {
+    onComplete(); // Call onComplete when onboarding is completed
   };
 
   const currentScreen = screens[currentScreenIndex];
@@ -86,6 +92,8 @@ export default function OnBoarding() {
       currentScreenIndex={currentScreenIndex}
       totalScreens={screens.length}
       onDotClick={handleDotClick}
+      handleComplete={handleComplete}
     />
   );
 }
+export default OnBoarding;

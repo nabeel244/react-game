@@ -2,18 +2,18 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "../lib/utils";
 
 const links = [
-  { name: "Explore", link: "/", image: "/images/explore.png" },
-  { name: "Missions", link: "/missions", image: "/images/missions.png" },
-  { name: "Friends", link: "/friends", image: "/images/friends.png" },
-  { name: "Bounty", link: "/earn", image: "/images/bounty.png" },
-  { name: "Wallet", link: "/wallet", image: "/images/toncoin.png" },
+  { name: "Exchange", link: "/", image: "/images/explore.png" },
+  { name: "Missions", link: "/missions", image: "/images/mine.png" },
+  { name: "Friends", link: "/friends", image: "/images/navbar_friends.png" },
+  { name: "Earn", link: "/earn", image: "/images/earn.png" },
+  { name: "Airdrop", link: "/wallet", image: "/images/toncoin.png" },
 ];
 
 export default function AppBar() {
   const { pathname } = useLocation();
   return (
-    <div className="fixed left-0 z-10 w-full px-5 py-0 bottom-2">
-      <div className="flex items-center w-full p-2 max-w-lg mx-auto rounded-[35px] bg-black/20 backdrop-blur-3xl">
+    <div className="fixed left-0 z-10 w-full py-0 bottom-0">
+      <div className="flex items-center w-full p-2 max-w-lg mx-auto bg-black/20" style={{ backgroundColor: '#1E0037' }}>
         {links.map((link, key) => (
           <Link
             key={key}
@@ -34,12 +34,6 @@ export default function AppBar() {
               />
             )}
             <span>{link.name}</span>
-            <div
-              className={cn(
-                "absolute hidden -bottom-1 left-1/2 -translate-x-1/2 bg-[#D9D9D9] rounded-sm shadow-[0px_0px_4px_0px_#B88CFF] h-1 w-4/5",
-                pathname === link.link && "block"
-              )}
-            />
           </Link>
         ))}
       </div>

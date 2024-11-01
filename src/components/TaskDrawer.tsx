@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import dayjs from "dayjs";
 import { Loader2Icon } from "lucide-react";
 import { useUserStore } from "@/store/user-store";
-
+console.log('we are here')
 export default function TaskDrawer({
   task,
   ...props
@@ -64,13 +64,13 @@ export default function TaskDrawer({
         alt={task.name}
         className="object-contain h-24 mx-auto"
       />
-      <h2 className="text-2xl font-medium text-center mt-9">{task.name}</h2>
-      <div className="px-5 py-2 mx-auto mt-4 border-2 border-dashed rounded-full border-primary w-fit">
+      <h2 className="text-2xl font-medium text-center mt-5">{task.name}</h2>
+      {/* <div className="px-5 py-2 mx-auto mt-4 border-2 border-dashed rounded-full border-primary w-fit">
         <Price
           amount={task.reward_coins.toLocaleString()}
           className="justify-center text-xl"
         />
-      </div>
+      </div> */}
       {task.is_submitted &&
         dayjs().isBefore(dayjs(task.submitted_at).add(60, "m")) && (
           <p className="mt-6 text-center text-white/80">
@@ -78,19 +78,26 @@ export default function TaskDrawer({
             the prize.
           </p>
         )}
-      <Button
-        className="w-full mt-12"
-        asChild
-        onClick={() => submitMutation.mutate()}
-      >
-        <a href={task.link} target="_blank">
-          {task.action_name}
-        </a>
-      </Button>
+       <div className="flex items-center justify-between w-full px-4 mt-2">
+  <Price
+    amount={`+${task.reward_coins.toLocaleString()}`}
+    className="text-xl flex items-center text-white"
+  />
+  <Button
+    className="bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full text-white w-32 h-10 flex items-center justify-center"
+    asChild
+    onClick={() => submitMutation.mutate()}
+  >
+    <a href={task.link} target="_blank" rel="noopener noreferrer">
+      {task.action_name}
+    </a>
+  </Button>
+</div>
+      
 
       {!task.is_rewarded && (
         <Button
-          className="w-full mt-6"
+          className="w-full mt-6 bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full text-white"
           disabled={
             claimMutation.isPending ||
             !task.is_submitted ||

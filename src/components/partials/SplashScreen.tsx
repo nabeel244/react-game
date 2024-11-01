@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect } from "react";
 import TelegramIcon from "../icons/TelegramIcon.png";
 import TwitterIcon from "../icons/TwitterIcon.png";
 import YoutubeIcon from "../icons/YoutubeIcon.png";
