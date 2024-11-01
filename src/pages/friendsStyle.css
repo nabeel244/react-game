@@ -1,0 +1,33 @@
+/* earnStyle.css */
+
+@keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-up {
+    animation: slideUp 1s ease-out;
+  }
+  
+
+
+  @keyframes borderSlideUp {
+    0% {
+      border-bottom-color: transparent;
+    }
+    100% {
+      border-bottom-color: #00FFFF;
+    }
+  }
+  
+  .border-slide-up {
+    animation: borderSlideUp 0.5s ease-out forwards;
+    border-bottom-width: 0.25px;
+    border-bottom-style: solid;
+  }

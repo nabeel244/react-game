@@ -50,7 +50,8 @@ export default function MissionDrawer({
   return (
     <Drawer {...props}>
       <img
-        src={mission.image}
+        // src={mission.image}
+        src="/images/missions.png"
         alt={mission.name}
         className="object-contain h-32 mx-auto"
       />
@@ -74,7 +75,7 @@ export default function MissionDrawer({
         </span>
       </div>
       <Button
-        className="w-full mt-6"
+        className="w-full mt-6 bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full text-white"
         disabled={upgradeMution.isPending || insufficientBalance}
         onClick={() => upgradeMution.mutate()}
       >
