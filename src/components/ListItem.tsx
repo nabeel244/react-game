@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-
+import './listItemStyle.css'
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: JSX.Element;
   image?: string;
@@ -30,12 +30,12 @@ export default function ListItem({
         <img
           src={image}
           alt={title}
-          className="object-contain w-9 h-9 mix-blend-screen"
+          className="object-contain w-9 h-9 mix-blend-screen slide-up"
         />
       )}
       <div className="text-sm font-medium text-left">
-        <p>{title}</p>
-        {subtitle}
+        <p className="slide-up">{title}</p>
+       <p className="slide-up"> {subtitle} </p>
       </div>
       <div className="ml-auto">{action}</div>
     </button>

@@ -4,14 +4,14 @@ import TaskDrawer from "@/components/TaskDrawer";
 import ListItem from "@/components/ListItem";
 import Price from "@/components/Price";
 import DailyDrawer from "@/components/DailyDrawer";
-import CheckIcon from "@/components/icons/CheckIcon";
+// import CheckIcon from "@/components/icons/CheckIcon";
 import { useQuery } from "@tanstack/react-query";
 import { $http } from "@/lib/http";
 import { cn } from "@/lib/utils";
 import { uesStore } from "@/store";
 import LoadingPage from "@/components/LoadingPage";
 import ReferralTaskDrawer from "@/components/ReferralTaskDrawer";
-import levelConfig from "@/config/level-config";
+// import levelConfig from "@/config/level-config";
 import { useUserStore } from "@/store/user-store";
 
 export default function Earn() {

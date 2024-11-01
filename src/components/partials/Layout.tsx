@@ -1,19 +1,26 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import AppBar from "../AppBar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { $http } from "@/lib/http";
 import { PopupMessageType } from "@/types/PopupMessageType";
 import PopupMessageDialog from "../PopupMessageDialog";
+import OnBoarding from "../onBoarding/onBoarding";
 
 export default function Layout() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
+  const [showOnboarding, setShowOnboarding] = useState(true);
   const popupMessgae = useQuery({
     queryKey: ["popup-message"],
     queryFn: () => $http.$get<PopupMessageType>("/popups"),
   });
+  useEffect(() => {
+    const hasCompletedOnboarding = localStorage.getItem('onboardingComplete');
+    if (hasCompletedOnboarding) {
+      setShowOnboarding(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -28,11 +35,22 @@ export default function Layout() {
       navigate("/");
     });
   }, []);
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+    localStorage.setItem('onboardingComplete', 'true');
+  };
   return (
     <main className="flex flex-col w-full max-w-lg h-[--tg-viewport-height] mx-auto text-white">
-      <Outlet />
-      <AppBar />
-      <PopupMessageDialog message={popupMessgae.data} />
+      {
+        showOnboarding ? <OnBoarding onComplete={handleOnboardingComplete} /> :
+          <>
+            <Outlet />
+            <AppBar />
+            <PopupMessageDialog message={popupMessgae.data} />
+          </>
+      }
+
     </main>
   );
 }

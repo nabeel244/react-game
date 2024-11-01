@@ -1,4 +1,4 @@
-import CopyIcon from "@/components/icons/CopyIcon";
+// import CopyIcon from "@/components/icons/CopyIcon";
 import { Button } from "@/components/ui/button";
 import { $http } from "@/lib/http";
 import { compactNumber } from "@/lib/utils";
@@ -10,7 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useCopyToClipboard } from "@uidotdev/usehooks";
 import { useMemo, useState } from "react";
 import { toast } from "react-toastify";
-import levelConfig from "@/config/level-config";
+// import levelConfig from "@/config/level-config";
+import './friendsStyle.css'
 
 const shareMessage = encodeURI(
   "Play Crypto Coin with me!"
@@ -44,11 +45,11 @@ export default function Friends() {
     >
       <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 modal-body">
         <div className="flex flex-row items-center justify-center text-center space-x-2">
-          <img src="/images/friends_group.png" alt="Invite Friends" className="w-8" />
-          <h1 className="text-2xl font-bold uppercase">Invite Friends!</h1>
+          <img src="/images/friends_group.png" alt="Invite Friends" className="w-8 slide-up" />
+          <h1 className="text-2xl font-bold uppercase slide-up">Invite Friends!</h1>
         </div>
 
-        <p className="mt-2.5 font-small text-center text-gray-400">
+        <p className="mt-2.5 font-small text-center text-gray-400 slide-up">
           You and your friend will receive bonuses
         </p>
         <div className="mt-4 rounded-xl"
@@ -58,7 +59,7 @@ export default function Friends() {
           }}
         >
 
-          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white/5 rounded-tl-lg rounded-tr-lg"
+          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white/5 rounded-tl-lg rounded-tr-lg border-slide-up"
             style={{
               borderBottom: '0.25px solid #00FFFF',
             }}
@@ -66,20 +67,20 @@ export default function Friends() {
             <img
               src="/images/invite_friend_gift.png"
               alt="chest"
-              className="object-contain w-9 h-9 mix-blend-screen"
+              className="object-contain w-9 h-9 mix-blend-screen slide-up"
             />
             <div className="text-sm font-medium text-left">
-              <p>Invite a friend</p>
+              <p className="slide-up">Invite a friend</p>
               <div className="flex items-center space-x-1">
                 <img
                   src="/images/coin.png"
                   alt="coin"
-                  className="object-contain w-5 h-5"
+                  className="object-contain w-5 h-5 slide-up"
                 />
-                <span className="font-bold text-primary pt-1">
+                <span className="font-bold text-primary pt-1 slide-up">
                   +{referral.base.welcome.toLocaleString()}
                 </span>
-                <span className="text-sm text-gray-500">for you and your friend</span>
+                <span className="text-sm text-gray-500 slide-up">for you and your friend</span>
               </div>
             </div>
           </button>
@@ -88,20 +89,20 @@ export default function Friends() {
             <img
               src="/images/telegram_invite_friend.png"
               alt="chest"
-              className="object-contain w-9 h-9 mix-blend-screen"
+              className="object-contain w-9 h-9 mix-blend-screen slide-up"
             />
             <div className="text-sm font-medium">
-              <p>Invite a friend with Telegram premium</p>
+              <p className="slide-up">Invite a friend with Telegram premium</p>
               <div className="flex items-center space-x-1">
                 <img
                   src="/images/coin.png"
                   alt="coin"
                   className="object-contain w-5 h-5"
                 />
-                <span className="font-bold text-primary pt-1">
+                <span className="font-bold text-primary pt-1 slide-up">
                   +{referral.premium.welcome.toLocaleString()}
                 </span>
-                <span className="text-sm text-gray-500">for you and your friend</span>
+                <span className="text-sm text-gray-500 slide-up">for you and your friend</span>
               </div>
             </div>
           </button>
