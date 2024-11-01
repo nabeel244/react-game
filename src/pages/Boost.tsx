@@ -12,7 +12,7 @@ import Price from "@/components/Price";
 import { uesStore } from "@/store";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import levelConfig from "@/config/level-config";
+// import levelConfig from "@/config/level-config";
 dayjs.extend(relativeTime);
 
 // +500 energy - 1,000 - 1lvl
@@ -60,7 +60,7 @@ export default function Boost() {
   const { boosters, dailyResetEnergy, maxDailyResetEnergy } = uesStore();
   const { balance } = useUserStore();
 
-  const user = useUserStore();
+  // const user = useUserStore();
 
   const canUseDailyResetEnergy = useMemo(
     () => dayjs().isAfter(dailyResetEnergy.next_available_at),
@@ -110,12 +110,17 @@ export default function Boost() {
   });
 
   return (
-    <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-      <div className="min-h-[600px] w-full modal-body py-8 px-6">
+    // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
+    <div className="flex flex-col justify-center bg-cover flex-1" 
+    style={{
+      background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
+    }}
+    >
+      <div className="min-h-[600px] w-full modal-body px-6">
         <h1 className="text-2xl font-bold text-center uppercase">
           Boost your game
         </h1>
-        <p className="mt-8 text-sm font-bold text-center uppercase">
+        <p className="mt-8 text-sm font-bold uppercase">
           Free Daily Booster
         </p>
         <div className="mt-4">
@@ -128,7 +133,7 @@ export default function Boost() {
             disabled={!canUseDailyResetEnergy}
           >
             <img
-              src="/images/extra-pewer.png"
+              src="/images/full_energy.png"
               alt="extra-power"
               className="object-contain w-9 h-9 mix-blend-screen"
             />
@@ -148,7 +153,28 @@ export default function Boost() {
             )}
           </button>
         </div>
-        <p className="mt-8 text-sm font-bold text-center uppercase">Boosters</p>
+
+        <div className="mt-4">
+          <button
+             className="flex items-center w-full gap-4 px-4 py-2 bg-white/10 rounded-xl opacity-20 cursor-not-allowed disabled:opacity-30 disabled:cursor-not-allowed disabled:bg-gray-600"
+            disabled
+          >
+            <img
+              src="/images/turbo.png"
+              alt="extra-power"
+              className="object-contain w-9 h-9 mix-blend-screen"
+            />
+            <div className="text-sm font-medium text-left">
+              <p>Turbo</p>
+              <p>
+                Coming Soon
+              </p>
+            </div>
+          </button>
+        </div>
+
+
+        <p className="mt-8 text-sm font-bold uppercase">Boosters</p>
         <div className="mt-4 space-y-2">
           <button
             className="flex items-center w-full gap-4 px-4 py-2 bg-white/10 rounded-xl"
@@ -158,7 +184,7 @@ export default function Boost() {
             }}
           >
             <img
-              src="/images/coin.png"
+              src="/images/multitap.png"
               alt="coin"
               className="object-contain w-9 h-9 mix-blend-screen"
             />
@@ -185,7 +211,7 @@ export default function Boost() {
             }}
           >
             <img
-              src="/images/bolt.png"
+              src="/images/energy_limit.png"
               alt="bolt"
               className="object-contain w-9 h-9 mix-blend-screen"
             />
@@ -245,7 +271,7 @@ export default function Boost() {
             )}
           </div>
           <Button
-            className="w-full"
+            className="w-full bg-gradient-to-r from-purple-700 to-cyan-400 shadow-md rounded-full"
             onClick={() => buyBoost.mutate(activeBooster)}
             disabled={buyBoost.isPending || insufficientBalance}
           >
