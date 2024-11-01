@@ -1,11 +1,11 @@
-import { cn, compactNumber } from "@/lib/utils";
-import { useUserStore } from "@/store/user-store";
+import { cn } from "@/lib/utils";
+// import { useUserStore } from "@/store/user-store";
 
 export default function UserGameDetails({
   className,
   ...props
 }: React.HtmlHTMLAttributes<HTMLDivElement>) {
-  const user = useUserStore();
+  // const user = useUserStore();
   return (
     <div
     className={cn("flex items-stretch justify-between gap-2 rounded-xl", className)}

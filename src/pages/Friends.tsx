@@ -22,7 +22,7 @@ export default function Friends() {
   const { telegram_id } = useUserStore();
   const { referral, levels } = uesStore();
 
-  const user = useUserStore();
+  // const user = useUserStore();
 
   const [showMoreBonuses, setShowMoreBonuses] = useState(false);
 

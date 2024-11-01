@@ -12,7 +12,7 @@ import { uesStore } from "@/store";
 import LoadingPage from "@/components/LoadingPage";
 import ReferralTaskDrawer from "@/components/ReferralTaskDrawer";
 // import levelConfig from "@/config/level-config";
-import { useUserStore } from "@/store/user-store";
+// import { useUserStore } from "@/store/user-store";
 
 export default function Earn() {
   const { totalDailyRewards } = uesStore();
@@ -24,7 +24,7 @@ export default function Earn() {
   const [activeReferralTask, setActiveReferralTask] =
     useState<ReferralTaskType | null>(null);
 
-  const user = useUserStore();
+  // const user = useUserStore();
 
   const { data, isLoading } = useQuery({
     queryKey: ["tasks"],
