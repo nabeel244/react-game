@@ -20,7 +20,7 @@ const PaginationBox: React.FC<PaginationBoxProps> = ({
 }) => {
   return (
     <div
-      className="w-full rounded-t-3xl p-6 shadow-lg border-t-2"
+      className="w-full rounded-t-3xl p-6 shadow-lg border-t-2 overflow-y-auto"
       style={{
         background: "linear-gradient(180deg, #2B004E 0%, #08142B 76.28%)",
         borderTopColor: "#6D00DA",

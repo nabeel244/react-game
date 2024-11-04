@@ -72,7 +72,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
 
   return (
     <div
-      className="relative flex flex-col items-center justify-between pt-16 bg-cover bg-center w-full max-w-lg h-[--tg-viewport-height]"
+      className="relative flex flex-col items-center justify-between pt-16 bg-cover bg-center w-full max-w-lg h-[--tg-viewport-height] overflow-y-auto"
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
       {currentScreenIndex !== 6 && (
