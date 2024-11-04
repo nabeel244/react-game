@@ -4,9 +4,9 @@ import { compactNumber } from "@/lib/utils";
 export default function Header() {
     const user = useUserStore();
     return (
-        <header className="flex items-center justify-between mt-4 gap-2 flex-wrap">
+        <header className="flex items-center justify-between mt-4 gap-1 flex-wrap">
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <img
             src="/images/avatar.png"
             alt="user-avatar"
@@ -16,7 +16,7 @@ export default function Header() {
             <p className="text-sm font-bold">
               {user?.first_name} {user?.last_name}
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <button
                 className="text-xs font-medium text-black px-2 py-1 rounded-md"
                 style={{
@@ -35,12 +35,12 @@ export default function Header() {
         </div>
       
         {/* Right Section: Profit Hourly and Exchange */}
-        <div className="flex gap-2">
-          <div className="flex flex-col items-center justify-center p-2 select-none bg-white/10 backdrop-blur-sm rounded-xl min-w-[100px]">
+        <div className="flex gap-1">
+          <div className="flex flex-col items-center justify-center p-1 select-none bg-white/10 backdrop-blur-sm rounded-xl min-w-[100px]">
             <p className="mb-1 text-xs text-center">Profit hourly</p>
             <div className="inline-flex items-center text-white font-bold">
               <img className="object-contain w-5 h-5" src="/images/coin.png" />
-              <span className="text-xs">
+              <span className="text-xs mt-1">
                 +{compactNumber(user.production_per_hour)}
               </span>
             </div>
