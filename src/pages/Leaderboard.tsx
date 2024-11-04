@@ -41,7 +41,12 @@ export default function Leaderboard() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[userData?.level?.level || 1]})`,}}>
+    // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[userData?.level?.level || 1]})`,}}>
+    <div className="flex flex-col justify-end bg-cover flex-1" 
+    style={{
+      background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
+    }}
+    >
       <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-12 modal-body">
         <div className="">
           <Swiper
@@ -62,7 +67,8 @@ export default function Leaderboard() {
                 <div
                   className="py-4 bg-center bg-cover rounded-xl"
                   style={{
-                    backgroundImage: `url('${levelConfig.bg[item.level]}')`,
+                    // backgroundImage: `url('${levelConfig.bg[item.level]}')`,
+                    background: 'linear-gradient(90deg, #03F6F4 0%, #6D00DA 45%, #AC5AFF 100%)',
                   }}
                 >
                   <img
@@ -103,9 +109,11 @@ export default function Leaderboard() {
               </div>
               <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full mt-2 h-4 w-full">
                 <div
-                  className="bg-[linear-gradient(180deg,#FBEDE0_0%,#F7B87D_21%,#F3A155_52%,#E6824B_84%,#D36224_100%)] h-full"
+                  // className="bg-[linear-gradient(180deg,#FBEDE0_0%,#F7B87D_21%,#F3A155_52%,#E6824B_84%,#D36224_100%)] h-full"
+                  className="h-full"
                   style={{
                     width: `${(balance / level?.to_balance) * 100}%`,
+                    background: 'linear-gradient(90deg, #03F6F4 0%, #6D00DA 45%, #AC5AFF 100%)',
                   }}
                 />
               </div>
