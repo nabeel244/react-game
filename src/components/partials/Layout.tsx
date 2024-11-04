@@ -41,7 +41,7 @@ export default function Layout() {
     localStorage.setItem('onboardingComplete', 'true');
   };
   return (
-    <main className="flex flex-col w-full max-w-lg h-[--tg-viewport-height] mx-auto text-white">
+    <main className="flex flex-col w-full max-w-lg h-[--tg-viewport-height] mx-auto text-white  overflow-y-auto bottom-10">
       {
         showOnboarding ? <OnBoarding onComplete={handleOnboardingComplete} /> :
           <>
