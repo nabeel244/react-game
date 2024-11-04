@@ -12,7 +12,7 @@ export default function Home() {
   const { maxLevel } = uesStore();
   return (
     <div
-      className="flex-1 px-5 pb-20 bg-center bg-cover"
+      className="flex-1 px-5 pb-20 bg-center bg-cover overflow-y-auto"
       style={{
         // backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,
         background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
@@ -20,8 +20,8 @@ export default function Home() {
     >
       <Header />
    
-      <UserGameDetails className="mt-5" />
-      <div className="flex mt-5 space-x-1.5 justify-center items-center select-none">
+      <UserGameDetails className="mt-3" />
+      <div className="flex mt-1 space-x-1.5 justify-center items-center select-none">
         <img
           src="/images/coins.png"
           alt="coins"
@@ -46,7 +46,7 @@ export default function Home() {
             </span>
           </div>
         </Link>
-        <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full mt-2 h-4 w-full">
+        <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full h-4 w-full">
   <div
     className="h-full"
     style={{

@@ -130,7 +130,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
          />
        </div>
        <button
-         className="bg-no-repeat bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center"
+         className="bg-no-repeat bottom-10 bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center"
          style={{
            backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
            width: "100%", // Make it full width

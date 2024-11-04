@@ -78,7 +78,7 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
   }, []);
   return (
     <div {...props}>
-      <div className="mt-4 mb-8">
+      <div className="mt-5 mb-8">
         <button
           ref={userTapButtonRef}
           className="flex items-center justify-center mx-auto transition-all rounded-full outline-none select-none disabled:opacity-80 disabled:cursor-not-allowed"
@@ -90,7 +90,8 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
             // src={levelConfig.frogs[user.level?.level || 1]}
             src='/images/tap_to_click.png'
             alt="level image"
-            className="object-contain max-w-full w-80 h-80"
+            // className="object-contain max-w-full w-80 h-80"
+            className="object-contain w-full max-w-xs sm:max-w-sm md:max-w-md h-auto"
             style={{ filter: levelConfig.filter[user.level?.level || 1] }}
           />
         </button>
