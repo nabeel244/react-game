@@ -86,7 +86,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
 
       {/* Fade-in image for all screens except the 4th one */}
       {isImageVisible && currentScreenIndex !== 4 && (
-        <img src={imageUrl} alt="logo" className="max-w-full fade-in-animation" />
+        <img src={imageUrl} alt="logo" className="max-w-full fade-in-animation " />
       )}
 
       {/* Special handling for the 4th screen */}
@@ -148,7 +148,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
       ) : (
         <>
           {/* Pagination Box */}
-          <div className={`absolute w-full bottom-0 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
+          <div className={`absolute w-full bottom-10 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
             <PaginationBox
               title={title}
               description={description}
