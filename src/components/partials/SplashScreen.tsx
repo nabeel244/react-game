@@ -58,7 +58,7 @@ export default function SplashScreen() {
       </div>
 
       {/* Social icons section */}
-      <div className="flex flex-col items-center mt-auto mb-4">
+      <div className="flex flex-col items-center mt-auto mb-4 md:mb-6 lg:mb-10">
         <p
           className="mt-3 font-medium"
           style={{

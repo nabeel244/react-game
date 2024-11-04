@@ -148,7 +148,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
       ) : (
         <>
           {/* Pagination Box */}
-          <div className={`absolute inset-x-0 bottom-10 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
+          <div className={`absolute w-full bottom-10 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
             <PaginationBox
               title={title}
               description={description}
