@@ -86,14 +86,14 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
 
       {/* Fade-in image for all screens except the 4th one */}
       {isImageVisible && currentScreenIndex !== 4 && (
-        <img src={imageUrl} alt="logo" className="max-w-full fade-in-animation " />
+        <img src={imageUrl} alt="logo" className="w-3/4 sm:w-2/4 lg:w-1/2 fade-in-animation " />
       )}
 
       {/* Special handling for the 4th screen */}
       {currentScreenIndex === 4 && (
         <div className="flex flex-col items-center w-full">
           {/* Full-width Image */}
-          <img src={imageUrl} alt="logo" className="max-w-full fade-in-animation" />
+          <img src={imageUrl} alt="logo" className="w-3/4 sm:w-2/4 lg:w-1/2 fade-in-animation" />
 
           {/* Full-width Join Telegram button directly below the image */}
           <button
@@ -148,7 +148,7 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
       ) : (
         <>
           {/* Pagination Box */}
-          <div className={`absolute w-full bottom-10 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
+          <div className={`absolute inset-x-0 bottom-10 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
             <PaginationBox
               title={title}
               description={description}
