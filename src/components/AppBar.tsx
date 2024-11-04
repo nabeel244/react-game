@@ -12,8 +12,10 @@ const links = [
 export default function AppBar() {
   const { pathname } = useLocation();
   return (
-    <div className="fixed left-0 z-10 w-full py-0 bottom-0">
-      <div className="flex items-center w-full p-2 max-w-lg mx-auto bg-black/20" style={{ backgroundColor: '#1E0037' }}>
+    // <div className="fixed left-0 z-10 w-full py-0 bottom-0">
+    <div className="fixed inset-x-0 bottom-0 z-10 w-full max-w-lg mx-auto">
+      {/* <div className="flex items-center w-full p-2 max-w-lg mx-auto bg-black/20" style={{ backgroundColor: '#1E0037' }}> */}
+      <div className="flex items-center w-full p-2 bg-black/20" style={{ backgroundColor: '#1E0037' }}>
         {links.map((link, key) => (
           <Link
             key={key}
