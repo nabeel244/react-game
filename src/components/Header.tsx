@@ -36,8 +36,8 @@ export default function Header() {
       
         {/* Right Section: Profit Hourly and Exchange */}
         <div className="flex gap-1">
-          <div className="flex flex-col items-center justify-center p-1 select-none bg-white/10 backdrop-blur-sm rounded-xl min-w-[100px]">
-            <p className="mb-1 text-xs text-center">Profit hourly</p>
+          <div className="flex flex-col items-center justify-center p-2 select-none bg-white/10 backdrop-blur-sm rounded-xl min-w-auto">
+            <p className="text-[9px] text-center">Profit hourly</p>
             <div className="inline-flex items-center text-white font-bold">
               <img className="object-contain w-5 h-5" src="/images/coin.png" />
               <span className="text-xs mt-1">
@@ -45,10 +45,10 @@ export default function Header() {
               </span>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center p-2 select-none bg-white/10 backdrop-blur-sm rounded-xl min-w-[100px]">
+          <div className="flex flex-col items-center justify-center p-2 select-none bg-white/10 backdrop-blur-sm rounded-xl min-w-auto">
             <div className="inline-flex items-center space-x-1.5 text-white font-bold">
               <img className="object-contain w-5 h-5" src="/images/exchange-icon.png" />
-              <p className="text-xs text-center">Exchange</p>
+              <p className="text-[9px] text-center">Exchange</p>
             </div>
           </div>
         </div>
