@@ -71,7 +71,7 @@ export default function SplashScreen() {
         </p>
 
         {/* Social icons with staggered animation */}
-        <div className="flex items-center gap-4 mt-3">
+        <div className="flex items-center gap-4 mt-3 pb-10">
           {socialLinks.map((link, index) => (
             <a
               key={link.title}
