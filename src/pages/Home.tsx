@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div
       // className="flex-1 px-5 pb-20 bg-center bg-cover"
-      className="flex-1 px-5 pb-20 bg-center bg-cover"
+      className="flex-1 px-5 pb-20 bg-center bg-cover pb-16"
       style={{
         // backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,
         background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
