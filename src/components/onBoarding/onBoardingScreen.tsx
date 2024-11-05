@@ -112,39 +112,72 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
       )}
 
       {currentScreenIndex === 6 ? (
-       <div
-       className={`relative w-full rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
-       style={{
-         background: "#2B004E",
-         borderTopColor: "#6D00DA",
-       }}
-     >
-       <div className="relative flex flex-col items-center"
-       onClick={goToHomeScreen}
-       >
-         {/* GIF added here */}
-         <img
-           src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
-           alt="Animated GIF"
-           className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-10"
-         />
-       </div>
-       <button
-         className="bg-no-repeat bottom-10 bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center mb-10"
-         style={{
-           backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
-           width: "100%", // Make it full width
-           maxWidth: "500px", // Increased max width
-           height: "8vh", // Increased height for a bigger button
-         }}
-         onClick={goToHomeScreen}
-       >
-         <span role="img" aria-label="gift" className="mr-2">
-           🎁
-         </span>
-         Get your present
-       </button>
-     </div>
+
+        <div
+          className={`relative w-full h-screen flex flex-col items-center justify-center rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
+          style={{
+            background: "#2B004E",
+            borderTopColor: "#6D00DA",
+          }}
+        >
+          <div className="flex flex-col items-center" onClick={goToHomeScreen}>
+            {/* GIF added here */}
+            <img
+              src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
+              alt="Animated GIF"
+              className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-4"
+            />
+          </div>
+          <button
+            className="bg-no-repeat bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center mt-4"
+            style={{
+              backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
+              width: "80%", // Adjusted width for mobile
+              maxWidth: "500px",
+              height: "8vh", // Set height based on viewport
+            }}
+            onClick={goToHomeScreen}
+          >
+            <span role="img" aria-label="gift" className="mr-2">
+              🎁
+            </span>
+            Get your present
+          </button>
+        </div>
+
+        //    <div
+        //    className={`relative w-full rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
+        //    style={{
+        //      background: "#2B004E",
+        //      borderTopColor: "#6D00DA",
+        //    }}
+        //  >
+        //    <div className="relative flex flex-col items-center"
+        //    onClick={goToHomeScreen}
+        //    >
+        //      {/* GIF added here */}
+        //      <img
+        //        src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
+        //        alt="Animated GIF"
+        //        className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-10"
+        //      />
+        //    </div>
+        //    <button
+        //      className="bg-no-repeat bottom-10 bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center mb-10"
+        //      style={{
+        //        backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
+        //        width: "100%", // Make it full width
+        //        maxWidth: "500px", // Increased max width
+        //        height: "8vh", // Increased height for a bigger button
+        //      }}
+        //      onClick={goToHomeScreen}
+        //    >
+        //      <span role="img" aria-label="gift" className="mr-2">
+        //        🎁
+        //      </span>
+        //      Get your present
+        //    </button>
+        //  </div>
       ) : (
         <>
           {/* Pagination Box */}
