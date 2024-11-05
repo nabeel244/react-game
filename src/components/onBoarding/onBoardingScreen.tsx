@@ -126,11 +126,11 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
          <img
            src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
            alt="Animated GIF"
-           className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-6"
+           className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-10"
          />
        </div>
        <button
-         className="bg-no-repeat bottom-10 bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center"
+         className="bg-no-repeat bottom-10 bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center mb-10"
          style={{
            backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
            width: "100%", // Make it full width
