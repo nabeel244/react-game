@@ -11,19 +11,20 @@ import { uesStore } from "./store";
 import { useDebounce } from "@uidotdev/usehooks";
 import { toast } from "react-toastify";
 import useTelegramInitData from "./hooks/useTelegramInitData";
+import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 
 const webApp = window?.Telegram.WebApp;
 const isDisktop = import.meta.env.DEV
   ? false
   : Telegram.WebApp.platform === "tdesktop";
-console.log(isDisktop)
+// console.log(isDisktop)
 function App() {
   const userStore = useUserStore();
   const { levels, levelUp } = uesStore();
   const { user, start_param } = useTelegramInitData();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const [isFirstLoad, setIsFirstLoad] = useState(false);
-  const balance = useDebounce(userStore.balance, 500);
+  const balance = useDebounce(userStore.balance, 1000);
 
   useEffect(() => {
     webApp.setHeaderColor("#000");
@@ -68,6 +69,7 @@ function App() {
   }, [balance, levels]);
 
   useEffect(() => {
+    console.log(user, 'usernnnnnnn')
     if (!user) return () => {};
 
     const signIn = async () => {
@@ -116,7 +118,7 @@ function App() {
     signIn().then(() => setShowSplashScreen(false));
   }, [user]);
 
-  // if (!user || isDisktop) return <PlayOnYourMobile />;
+  if (!user || isDisktop) return <PlayOnYourMobile />;
 
   if (showSplashScreen) return <SplashScreen />;
 
