@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import dayjs from "dayjs";
 import { Loader2Icon } from "lucide-react";
 import { useUserStore } from "@/store/user-store";
-console.log('we are here')
 export default function TaskDrawer({
   task,
   ...props
