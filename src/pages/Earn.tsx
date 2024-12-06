@@ -50,7 +50,7 @@ export default function Earn() {
 
   return (
     // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-    <div className="flex flex-col justify-end bg-cover flex-1"
+    <div className="flex flex-col justify-end bg-cover flex-1 pb-16"
     style={{
       background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
     }}

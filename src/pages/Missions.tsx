@@ -32,7 +32,7 @@ export default function Missions() {
 
   return (
     // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-    <div className="flex flex-col justify-end bg-cover flex-1" 
+    <div className="flex flex-col justify-end bg-cover flex-1 pb-16" 
       style={{
         background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
       }}
@@ -40,7 +40,7 @@ export default function Missions() {
       <div className="flex flex-col flex-1 w-full h-full px-6 pb-24 modal-body">
       <Header />
         {/* <UserGameDetails className="mt-4" /> */}
-        <div className="flex items-center justify-center mt-10 space-x-1 text-gradient">
+        <div className="flex items-center justify-center mt-5 space-x-1 text-gradient">
           <img
             src="/images/coins.png"
             alt="coins"
@@ -50,7 +50,7 @@ export default function Missions() {
             {Math.floor(user.balance)?.toLocaleString()}
           </span>
         </div>
-        <div className="mt-10">
+        <div className="mt-5">
           <div className="flex gap-4">
             {missionTypes.map((type, key) => (
               <button
@@ -64,7 +64,7 @@ export default function Missions() {
               </button>
             ))}
           </div>
-          <div className="mt-6">
+          <div className="mt-5">
             <div className="grid grid-cols-2 gap-3">
               {missions.isLoading ? (
                 <div className="flex items-center justify-center h-full col-span-2 mt-6">
@@ -109,7 +109,7 @@ export default function Missions() {
                       <div className="flex flex-col ">
                         <p className="text-[10px]">{mission.name}</p>
                         <div className="bg-gradient-to-r from-[#03F6F4] to-[#37BBFE] rounded-md p-1 mt-1">
-                        <p className=" text-[10px] font-medium text-black">
+                        <p className=" text-[8px] font-medium text-black">
                           Profit per hour
                         </p>
                         <Price
@@ -117,7 +117,7 @@ export default function Missions() {
                             mission.production_per_hour ||
                             `+${mission.next_level?.production_per_hour || 0}`
                           }
-                          className=" text-[10px] text-black"
+                          className=" text-[8px] text-black"
                         />
                         </div>
                       </div>

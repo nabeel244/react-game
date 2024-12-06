@@ -58,9 +58,9 @@ export default function SplashScreen() {
       </div>
 
       {/* Social icons section */}
-      <div className="flex flex-col items-center mt-auto mb-4">
+      <div className="flex flex-col items-center mt-auto  mb-4 md:mb-6 lg:mb-10">
         <p
-          className="mt-3 font-medium"
+          className="mt-3 font-medium text-center"
           style={{
             fontFamily: 'Poppins, sans-serif',
             fontSize: '14px',
@@ -71,7 +71,7 @@ export default function SplashScreen() {
         </p>
 
         {/* Social icons with staggered animation */}
-        <div className="flex items-center gap-4 mt-3">
+        <div className="flex items-center gap-4 mt-3 pb-12">
           {socialLinks.map((link, index) => (
             <a
               key={link.title}

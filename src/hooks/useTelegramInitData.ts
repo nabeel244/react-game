@@ -26,7 +26,9 @@ function useTelegramInitData() {
     const firstLayerInitData = Object.fromEntries(
       new URLSearchParams(window.Telegram.WebApp.initData)
     );
-
+    console.log(window.Telegram.WebApp, 'initData from Telegram');
+    console.log(window.Telegram.WebApp.initData, 'initData from Telegram');
+console.log(firstLayerInitData, 'firstLayerInitData')
     const initData: Record<string, string> = {};
 
     for (const key in firstLayerInitData) {

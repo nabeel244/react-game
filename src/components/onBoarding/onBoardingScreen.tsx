@@ -86,14 +86,14 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
 
       {/* Fade-in image for all screens except the 4th one */}
       {isImageVisible && currentScreenIndex !== 4 && (
-        <img src={imageUrl} alt="logo" className="max-w-full fade-in-animation" />
+        <img src={imageUrl} alt="logo" className="w-3/4 sm:w-2/4 lg:w-1/2 fade-in-animation " />
       )}
 
       {/* Special handling for the 4th screen */}
       {currentScreenIndex === 4 && (
         <div className="flex flex-col items-center w-full">
           {/* Full-width Image */}
-          <img src={imageUrl} alt="logo" className="max-w-full fade-in-animation" />
+          <img src={imageUrl} alt="logo" className="w-3/4 sm:w-2/4 lg:w-1/2 fade-in-animation" />
 
           {/* Full-width Join Telegram button directly below the image */}
           <button
@@ -112,43 +112,76 @@ const OnBoardingScreen: React.FC<OnBoardingScreenProps> = ({
       )}
 
       {currentScreenIndex === 6 ? (
-       <div
-       className={`relative w-full rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
-       style={{
-         background: "#2B004E",
-         borderTopColor: "#6D00DA",
-       }}
-     >
-       <div className="relative flex flex-col items-center"
-       onClick={goToHomeScreen}
-       >
-         {/* GIF added here */}
-         <img
-           src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
-           alt="Animated GIF"
-           className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-6"
-         />
-       </div>
-       <button
-         className="bg-no-repeat bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center"
-         style={{
-           backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
-           width: "100%", // Make it full width
-           maxWidth: "500px", // Increased max width
-           height: "8vh", // Increased height for a bigger button
-         }}
-         onClick={goToHomeScreen}
-       >
-         <span role="img" aria-label="gift" className="mr-2">
-           🎁
-         </span>
-         Get your present
-       </button>
-     </div>
+
+        <div
+          className={`relative w-full h-screen flex flex-col items-center justify-center rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
+          style={{
+            background: "#2B004E",
+            borderTopColor: "#6D00DA",
+          }}
+        >
+          <div className="flex flex-col items-center" onClick={goToHomeScreen}>
+            {/* GIF added here */}
+            <img
+              src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
+              alt="Animated GIF"
+              className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-4"
+            />
+          </div>
+          <button
+            className="bg-no-repeat bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center mt-4"
+            style={{
+              backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
+              width: "80%", // Adjusted width for mobile
+              maxWidth: "500px",
+              height: "8vh", // Set height based on viewport
+            }}
+            onClick={goToHomeScreen}
+          >
+            <span role="img" aria-label="gift" className="mr-2">
+              🎁
+            </span>
+            Get your present
+          </button>
+        </div>
+
+        //    <div
+        //    className={`relative w-full rounded-t-3xl p-6 shadow-lg border-t-2 ${isBoxVisible ? "slide-up" : "hidden-box"}`}
+        //    style={{
+        //      background: "#2B004E",
+        //      borderTopColor: "#6D00DA",
+        //    }}
+        //  >
+        //    <div className="relative flex flex-col items-center"
+        //    onClick={goToHomeScreen}
+        //    >
+        //      {/* GIF added here */}
+        //      <img
+        //        src="./images/onboarding/gift.gif" // Replace this with your actual GIF file
+        //        alt="Animated GIF"
+        //        className="block w-3/4 sm:w-2/4 lg:w-2/5 h-auto mb-10"
+        //      />
+        //    </div>
+        //    <button
+        //      className="bg-no-repeat bottom-10 bg-center bg-cover text-white font-semibold rounded-full flex items-center justify-center mb-10"
+        //      style={{
+        //        backgroundImage: "linear-gradient(90deg, #6D00DA 0%, #00DAF7 100%)",
+        //        width: "100%", // Make it full width
+        //        maxWidth: "500px", // Increased max width
+        //        height: "8vh", // Increased height for a bigger button
+        //      }}
+        //      onClick={goToHomeScreen}
+        //    >
+        //      <span role="img" aria-label="gift" className="mr-2">
+        //        🎁
+        //      </span>
+        //      Get your present
+        //    </button>
+        //  </div>
       ) : (
         <>
           {/* Pagination Box */}
-          <div className={`absolute w-full bottom-0 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
+          <div className={`absolute w-full bottom-10 ${isBoxVisible ? "slide-up" : "hidden-box"}`}>
             <PaginationBox
               title={title}
               description={description}

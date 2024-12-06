@@ -12,6 +12,7 @@ import Price from "@/components/Price";
 import { uesStore } from "@/store";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import './friendsStyle.css'
 // import levelConfig from "@/config/level-config";
 dayjs.extend(relativeTime);
 
@@ -39,18 +40,18 @@ const boosterDetails: Record<
     title: "Multitap",
     description: "Increase the amount of coins you can earn per tap",
     shortDescription: "coins for tap",
-    image: "/images/coin.png",
+    image: "/images/multitap.png",
   },
   energy_limit: {
     title: "Energy limit",
-    description: "Increase the amount of energy",
+    description: "Increase the limit of energy storage",
     shortDescription: "energy points",
-    image: "/images/bolt.png",
+    image: "/images/energy_limit.png",
   },
   full_energy: {
     title: "Full energy",
-    description: "Recharge your energy to the maximum",
-    image: "/images/extra-pewer.png",
+    description: "Recharge and thrive. Fill your energy to the maximum",
+    image: "/images/full_energy.png",
   },
 };
 
@@ -111,13 +112,13 @@ export default function Boost() {
 
   return (
     // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
-    <div className="flex flex-col justify-center bg-cover flex-1" 
-    style={{
-      background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
-    }}
+    <div className="flex flex-col justify-center bg-cover flex-1 "
+      style={{
+        background: 'linear-gradient(90deg, rgba(127,0,255,0.2) 0%, rgba(62,0,116,0.83) 78%, rgba(43,0,78,1) 100%)',
+      }}
     >
       <div className="min-h-[600px] w-full modal-body px-6">
-        <h1 className="text-2xl font-bold text-center uppercase">
+        <h1 className="text-2xl font-bold text-center uppercase ">
           Boost your game
         </h1>
         <p className="mt-8 text-sm font-bold uppercase">
@@ -135,10 +136,10 @@ export default function Boost() {
             <img
               src="/images/full_energy.png"
               alt="extra-power"
-              className="object-contain w-9 h-9 mix-blend-screen"
+              className="object-contain w-9 h-9 mix-blend-screen slide-up"
             />
-            <div className="text-sm font-medium text-left">
-              <p>Full energy</p>
+            <div className="text-sm font-medium text-left slide-up">
+              <p className="slide-up">Full energy</p>
               <p className={cn({ "text-white/80": !canUseDailyResetEnergy })}>
                 {maxDailyResetEnergy - dailyResetEnergy.uses_today}/
                 {maxDailyResetEnergy} available
@@ -156,7 +157,7 @@ export default function Boost() {
 
         <div className="mt-4">
           <button
-             className="flex items-center w-full gap-4 px-4 py-2 bg-white/10 rounded-xl opacity-20 cursor-not-allowed disabled:opacity-30 disabled:cursor-not-allowed disabled:bg-gray-600"
+            className="flex items-center w-full gap-4 px-4 py-2 bg-white/10 rounded-xl opacity-20 cursor-not-allowed disabled:opacity-30 disabled:cursor-not-allowed disabled:bg-gray-600"
             disabled
           >
             <img
@@ -186,15 +187,15 @@ export default function Boost() {
             <img
               src="/images/multitap.png"
               alt="coin"
-              className="object-contain w-9 h-9 mix-blend-screen"
+              className="object-contain w-9 h-9 mix-blend-screen slide-up"
             />
-            <div className="text-sm font-medium text-left">
-              <p>Multi tap</p>
+            <div className="text-sm font-medium text-left slide-up">
+              <p className="slide-up">Multi tap</p>
               <div className="flex items-center space-x-1">
                 <img
                   src="/images/coin.png"
                   alt="coin"
-                  className="object-contain w-5 h-5"
+                  className="object-contain w-5 h-5 "
                 />
                 <span className="font-bold">
                   {compactNumber(boosters.multi_tap.cost)}
@@ -213,11 +214,11 @@ export default function Boost() {
             <img
               src="/images/energy_limit.png"
               alt="bolt"
-              className="object-contain w-9 h-9 mix-blend-screen"
+              className="object-contain w-9 h-9 mix-blend-screen slide-up"
             />
             <div className="text-sm font-medium text-left">
-              <p>Energy limit</p>
-              <div className="flex items-center space-x-1">
+              <p className="slide-up">Energy limit</p>
+              <div className="flex items-center space-x-1 slide-up">
                 <img
                   src="/images/coin.png"
                   alt="coin"
@@ -236,15 +237,15 @@ export default function Boost() {
       </div>
       <Drawer open={open} onOpenChange={setOpen}>
         <div className="relative space-y-6">
-          <h4 className="text-2xl font-bold text-center">
-            {boosterDetails[activeBooster].title}
-          </h4>
+
           <img
             src={boosterDetails[activeBooster].image}
             alt={activeBooster}
             className="object-contain w-24 h-24 mx-auto"
           />
-
+          <h4 className="text-2xl font-bold text-center">
+            {boosterDetails[activeBooster].title}
+          </h4>
           <div className="text-sm font-medium text-center">
             <p className="">{boosterDetails[activeBooster].description}</p>
             {activeBooster !== "full_energy" && (
