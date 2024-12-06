@@ -27,7 +27,6 @@ export default function UserGameDetails({
   };
 
   const hasRedeemedToday = user?.last_daily_cipher_redeem && isToday(user.last_daily_cipher_redeem);
-console.log(hasRedeemedToday, 'thisssssss')
   // Format time to HH:mm:ss
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600);
@@ -86,6 +85,7 @@ console.log(hasRedeemedToday, 'thisssssss')
       <p className="text-gray-400 text-[8px] mt-1">{formatTime(timeRemaining)}</p>
       </div>
     </div>
+  
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
         <img className="object-contain" src="/images/combo.png" />{" "}
       <p className="text-[8px] pt-1">Daily Combo</p>
@@ -93,6 +93,7 @@ console.log(hasRedeemedToday, 'thisssssss')
       <p className="text-gray-400 text-[8px] mt-1">20:10 hrs</p>
       </div>
     </div>
+   
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in" style={{
       borderRight: '1px solid #00FFFF', // Left border color for the left half
     }}>

@@ -8,6 +8,7 @@ import { uesStore } from "@/store";
 import Header from "@/components/Header";
 import DailyCipher from "@/components/DailyCipher";
 
+
 export default function Home() {
   const user = useUserStore();
   const { maxLevel } = uesStore();
@@ -34,7 +35,7 @@ export default function Home() {
         </span>
       </div>
       <div className="">
-        <Link
+        <Link 
           to={"/leaderboard"}
           className="flex items-center justify-between gap-2"
         >
