@@ -4,6 +4,7 @@ import { create } from "zustand";
 type UserStore = UserType & {
   UserTap: () => boolean;
   incraseEnergy: (value: number) => void;
+  last_daily_cipher_redeem: string
 };
 
 export const useUserStore = create<UserStore>((set, get) => ({
@@ -23,7 +24,9 @@ export const useUserStore = create<UserStore>((set, get) => ({
   production_per_hour: 0,
   updated_at: "",
   username: "",
+  last_daily_cipher_redeem: '',
   UserTap() {
+    console.log(get().earn_per_tap, 'this is earn per tap')
     if (get().available_energy < get().earn_per_tap) return false;
     set((state) => ({
       available_energy: state.available_energy - state.earn_per_tap,

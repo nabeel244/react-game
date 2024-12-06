@@ -1,11 +1,58 @@
 import { cn } from "@/lib/utils";
-// import { useUserStore } from "@/store/user-store";
 import './userGameDetailStyle.css'
+import { useEffect, useState } from "react";
+import { useUserStore } from "@/store/user-store";
+
 export default function UserGameDetails({
   className,
   ...props
 }: React.HtmlHTMLAttributes<HTMLDivElement>) {
-  // const user = useUserStore();
+  const user = useUserStore();
+  console.log(user, "this is userUse Store");
+
+  const calculateTimeToMidnight = () => {
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0); // Set the time to 12:00 AM of the next day
+    return Math.floor((midnight.getTime() - now.getTime()) / 1000); // Difference in seconds
+  };
+
+  const [timeRemaining, setTimeRemaining] = useState(calculateTimeToMidnight());
+
+  // Check if the last_daily_cipher_redeem is today
+  const isToday = (dateString: string) => {
+    const today = new Date().toLocaleDateString("en-CA"); // Format: YYYY-MM-DD
+    const givenDate = new Date(dateString).toLocaleDateString("en-CA");
+    return today === givenDate;
+  };
+
+  const hasRedeemedToday = user?.last_daily_cipher_redeem && isToday(user.last_daily_cipher_redeem);
+  // Format time to HH:mm:ss
+  const formatTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  };
+
+  useEffect(() => {
+    if (timeRemaining <= 0) return; // Stop timer if it reaches 0
+
+    const timer = setInterval(() => {
+      setTimeRemaining((prev) => Math.max(prev - 1, 0));
+    }, 1000);
+
+    return () => clearInterval(timer); // Cleanup on component unmount
+  }, [timeRemaining]);
+
+  // Logic to execute when countdown ends
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      console.log("Daily cipher is available now!");
+      // Add your trigger logic here, e.g., notify the user or unlock a feature
+    }
+  }, [timeRemaining]);
+  
   return (
     <div
     className={cn("flex items-stretch justify-between gap-1 rounded-xl", className)}
@@ -26,12 +73,19 @@ export default function UserGameDetails({
       </div>
     </div>
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
+      {
+        hasRedeemedToday && (
+          <img src="/images/task_completed.png"  className="absolute top-1 right-1 w-4 h-4" alt="" />
+        )
+      }
         <img className="object-contain" src="/images/cipher.png" />{" "}
       <p className="text-[8px] pt-1">Daily Cipher</p>
+
       <div className="inline-flex items-center space-x-1.5 text-white font-bold">
-      <p className="text-gray-400 text-[8px] mt-1">20:10 hrs</p>
+      <p className="text-gray-400 text-[8px] mt-1">{formatTime(timeRemaining)}</p>
       </div>
     </div>
+  
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
         <img className="object-contain" src="/images/combo.png" />{" "}
       <p className="text-[8px] pt-1">Daily Combo</p>
@@ -39,6 +93,7 @@ export default function UserGameDetails({
       <p className="text-gray-400 text-[8px] mt-1">20:10 hrs</p>
       </div>
     </div>
+   
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in" style={{
       borderRight: '1px solid #00FFFF', // Left border color for the left half
     }}>

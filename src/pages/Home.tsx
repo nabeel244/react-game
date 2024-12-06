@@ -6,6 +6,8 @@ import UserGameDetails from "@/components/UserGameDetails";
 // import { cn, compactNumber } from "@/lib/utils";
 import { uesStore } from "@/store";
 import Header from "@/components/Header";
+import DailyCipher from "@/components/DailyCipher";
+
 
 export default function Home() {
   const user = useUserStore();
@@ -20,7 +22,7 @@ export default function Home() {
       }}
     >
       <Header />
-   
+
       <UserGameDetails className="mt-3" />
       <div className="flex mt-1 space-x-1.5 justify-center items-center select-none">
         <img
@@ -33,7 +35,7 @@ export default function Home() {
         </span>
       </div>
       <div className="">
-        <Link
+        <Link 
           to={"/leaderboard"}
           className="flex items-center justify-between gap-2"
         >
@@ -48,14 +50,14 @@ export default function Home() {
           </div>
         </Link>
         <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full h-4 w-full">
-  <div
-    className="h-full"
-    style={{
-      width: `${(user?.balance! / user?.level!?.to_balance) * 100}%`,
-      background: 'linear-gradient(90deg, #03F6F4 0%, #6D00DA 45%, #AC5AFF 100%)', // Apply the gradient
-    }}
-  ></div>
-</div>
+          <div
+            className="h-full"
+            style={{
+              width: `${(user?.balance! / user?.level!?.to_balance) * 100}%`,
+              background: 'linear-gradient(90deg, #03F6F4 0%, #6D00DA 45%, #AC5AFF 100%)', // Apply the gradient
+            }}
+          ></div>
+        </div>
 
         {/* <div className="bg-[#FFDAA3]/10 border overflow-hidden border-[#FFDAA3]/10 rounded-full mt-2 h-4 w-full">
           <div
@@ -66,6 +68,7 @@ export default function Home() {
           ></div>
         </div> */}
       </div>
+      <DailyCipher />
       <UserTap />
     </div>
   );
