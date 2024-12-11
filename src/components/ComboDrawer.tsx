@@ -1,7 +1,6 @@
 import { Button } from "./ui/button";
 import Drawer, { DrawerProps } from "./ui/drawer";
 import Price from "./Price";
-import { Loader2Icon } from "lucide-react";
 import { toast } from "react-toastify";
 import { useMemo } from "react";
 import { useUserStore } from "@/store/user-store";
