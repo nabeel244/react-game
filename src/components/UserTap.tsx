@@ -91,7 +91,7 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
             src='/images/tap_to_click.png'
             alt="level image"
             // className="object-contain max-w-full w-80 h-80"
-            className="object-contain w-full max-w-xs sm:max-w-sm md:max-w-md h-auto"
+            className="object-contain max-w-xs sm:max-w-sm md:max-w-md h-auto"
             style={{ filter: levelConfig.filter[user.level?.level || 1] }}
           />
         </button>

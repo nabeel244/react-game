@@ -23,6 +23,10 @@ export default function ComboDrawer({
     try {
       if (!card) return;
       await unlockCard(user.telegram_id,card.id);
+
+      useUserStore.setState((state) => ({
+        balance: state.balance + card.reward,
+      }));
       toast.success("Card unlocked successfully!");
       props.onOpenChange?.(false); // Close the drawer
     } catch (error) {

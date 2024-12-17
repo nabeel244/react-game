@@ -17,22 +17,26 @@ type DailyComboStore = {
   unlockCard: (userId: number, cardId: number) => Promise<void>;
 };
 
-export const useDailyComboStore = create<DailyComboStore>((set, get) => ({
+export const useDailyComboStore = create<DailyComboStore>((set) => ({
   cards: [],
   claimedRewards: [],
 
   fetchDailyCards: async () => {
     try {
       const response = await $http.get("/daily-combo/cards");
-      set({ cards: response.data.cards });
+      set({
+        cards: response.data.cards,
+        claimedRewards: response.data.claimed_rewards, // Update claimed rewards
+      });
     } catch (error) {
       console.error("Failed to fetch daily combo cards:", error);
     }
   },
+  
 
   unlockCard: async (userId: number, cardId: number) => {
     try {
-      const response = await $http.post("/daily-combo/unlock-card", {
+      await $http.post("/daily-combo/unlock-card", {
         telegram_id: userId,
         card_id: cardId,
       });

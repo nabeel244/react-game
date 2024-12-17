@@ -61,7 +61,7 @@ export default function Exchange() {
                   image={exchange.logo || "/images/bounty.png"}
                   onClick={() => handleExchangeClick(exchange)}
                   className={cn(
-                    "disabled:opacity-50 disabled:mix-blend-luminosity"
+                    ""
                   )}
                   disabled={selectedExchangeId === exchange.id}
                   action={

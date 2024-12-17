@@ -14,6 +14,7 @@ export default function ExchangeDrawer({
                             <img
                                 src={card.logo || "/images/market_ceo.png"}
                                 alt={card.name}
+                                style={{ width: "100px", height: "100px" }}
                             />
                         </div>
 

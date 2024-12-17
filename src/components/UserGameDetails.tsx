@@ -2,14 +2,15 @@ import { cn } from "@/lib/utils";
 import './userGameDetailStyle.css'
 import { useEffect, useState } from "react";
 import { useUserStore } from "@/store/user-store";
+import DailyDrawer from "./DailyDrawer";
+import {  useNavigate } from "react-router-dom";
 
 export default function UserGameDetails({
   className,
   ...props
 }: React.HtmlHTMLAttributes<HTMLDivElement>) {
   const user = useUserStore();
-  console.log(user, "this is userUse Store");
-
+  const navigate = useNavigate()
   const calculateTimeToMidnight = () => {
     const now = new Date();
     const midnight = new Date();
@@ -18,6 +19,7 @@ export default function UserGameDetails({
   };
 
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeToMidnight());
+  const [isDailyDrawerOpen, setIsDailyDrawerOpen] = useState(false);
 
   // Check if the last_daily_cipher_redeem is today
   const isToday = (dateString: string) => {
@@ -52,6 +54,11 @@ export default function UserGameDetails({
       // Add your trigger logic here, e.g., notify the user or unlock a feature
     }
   }, [timeRemaining]);
+
+
+  const clickDailyCombo = () => {
+    navigate("/mine");
+  };
   
   return (
     <div
@@ -62,14 +69,14 @@ export default function UserGameDetails({
     }}
     {...props}
   >
-    <div className="flex-1 flex flex-col items-center justify-center p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in"
+    <div onClick={() => setIsDailyDrawerOpen(true)} className="flex-1 cursor-pointer flex flex-col items-center justify-center p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in"
     style={{
       borderLeft: '1px solid #00FFFF',
     }}>
         <img className="object-contain" src="/images/reward.png" />{" "}
       <p className="text-[8px] pt-1">Daily Reward</p>
       <div className="inline-flex items-center space-x-1.5 text-white font-bold">
-      <p className="text-gray-400 text-[8px] mt-1">20:10 hrs</p>
+      <p className="text-gray-400 text-[8px] mt-1">{formatTime(timeRemaining)}</p>
       </div>
     </div>
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
@@ -86,13 +93,15 @@ export default function UserGameDetails({
       </div>
     </div>
   
-    <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
+
+    <div onClick={() =>clickDailyCombo()} className="flex flex-col items-center cursor-pointer justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in">
         <img className="object-contain" src="/images/combo.png" />{" "}
       <p className="text-[8px] pt-1">Daily Combo</p>
       <div className="inline-flex items-center space-x-1.5 text-white font-bold">
-      <p className="text-gray-400 text-[8px] mt-1">20:10 hrs</p>
+      <p className="text-gray-400 text-[8px] mt-1">{formatTime(timeRemaining)}</p>
       </div>
     </div>
+    
    
     <div className="flex flex-col items-center justify-center flex-1 p-2 select-none bg-white/5 backdrop-blur-sm rounded-xl fade-in" style={{
       borderRight: '1px solid #00FFFF', // Left border color for the left half
@@ -103,6 +112,10 @@ export default function UserGameDetails({
       <p className="text-gray-400 text-[8px] mt-1">20:10 hrs</p>
       </div>
     </div>
+    <DailyDrawer
+        open={isDailyDrawerOpen}
+        onOpenChange={setIsDailyDrawerOpen}
+      />
   </div>
     // <div
     //   className={cn("flex items-stretch justify-between gap-2", className)}
