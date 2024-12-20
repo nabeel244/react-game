@@ -50,8 +50,8 @@ export default function MissionDrawer({
   return (
     <Drawer {...props}>
       <img
-        // src={mission.image}
-        src="/images/missions.png"
+        src={mission.image}
+        // src="/images/missions.png"
         alt={mission.name}
         className="object-contain h-32 mx-auto"
       />

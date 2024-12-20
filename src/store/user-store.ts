@@ -4,7 +4,10 @@ import { create } from "zustand";
 type UserStore = UserType & {
   UserTap: () => boolean;
   incraseEnergy: (value: number) => void;
-  last_daily_cipher_redeem: string
+  last_daily_cipher_redeem: string;
+  selected_exchange_id: number | null;
+  updateUser: (userData: Partial<Omit<UserStore, "updateUser">>) => void;
+  updateSelectedExchange: (exchangeId: number) => void;
 };
 
 export const useUserStore = create<UserStore>((set, get) => ({
@@ -25,8 +28,9 @@ export const useUserStore = create<UserStore>((set, get) => ({
   updated_at: "",
   username: "",
   last_daily_cipher_redeem: '',
+  selected_exchange_id: 0,
+  updateUser: (userData) => set((state) => ({ ...state, ...userData })),
   UserTap() {
-    console.log(get().earn_per_tap, 'this is earn per tap')
     if (get().available_energy < get().earn_per_tap) return false;
     set((state) => ({
       available_energy: state.available_energy - state.earn_per_tap,
@@ -34,6 +38,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
     }));
     return true;
   },
+  updateSelectedExchange: (exchangeId: number) => set({ selected_exchange_id: exchangeId }),
   incraseEnergy: (value) => {
     set((state) => ({
       available_energy: Math.min(

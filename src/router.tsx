@@ -8,6 +8,8 @@ import Friends from "./pages/Friends";
 import Missions from "./pages/Missions";
 import Wallet from "./pages/Wallet";
 import Market from "./pages/Market";
+import Exchange from "./pages/Exchange";
+import { UpdateProfile } from "./pages/UpdateProfile";
 // import SplashScreen from "./components/partials/SplashScreen";
 // import OnBoarding from "./components/onBoarding/onBoarding.tsx";
 
@@ -22,8 +24,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "market",
+        path: "mine",
         element: <Market />,
+      },
+      {
+        path: "setting",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "exchange",
+        element: <Exchange />,
       },
       {
         path: "boost",

@@ -1,7 +1,6 @@
 import { Button } from "./ui/button";
 import Drawer, { DrawerProps } from "./ui/drawer";
 import Price from "./Price";
-import { Loader2Icon } from "lucide-react";
 import { toast } from "react-toastify";
 import { useMemo } from "react";
 import { useUserStore } from "@/store/user-store";
@@ -24,6 +23,10 @@ export default function ComboDrawer({
     try {
       if (!card) return;
       await unlockCard(user.telegram_id,card.id);
+
+      useUserStore.setState((state) => ({
+        balance: state.balance + card.reward,
+      }));
       toast.success("Card unlocked successfully!");
       props.onOpenChange?.(false); // Close the drawer
     } catch (error) {

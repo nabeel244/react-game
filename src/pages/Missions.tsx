@@ -29,7 +29,7 @@ export default function Missions() {
     staleTime: 1000 * 60,
     enabled: !!activeType?.id,
   });
-
+ 
   return (
     // <div className="flex flex-col justify-end bg-cover flex-1" style={{backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,}}>
     <div className="flex flex-col justify-end bg-cover flex-1 pb-16" 
