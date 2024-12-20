@@ -42,11 +42,13 @@ export default function Header() {
               >
                 Buy skin
               </button>
+              <Link to="/setting">
               <img
                 src="/images/setting.png"
                 alt="settings-icon"
                 className="w-5 h-5 cursor-pointer"
               />
+              </Link>
             </div>
           </div>
         </div>

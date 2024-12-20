@@ -6,6 +6,7 @@ type UserStore = UserType & {
   incraseEnergy: (value: number) => void;
   last_daily_cipher_redeem: string;
   selected_exchange_id: number | null;
+  updateUser: (userData: Partial<Omit<UserStore, "updateUser">>) => void;
   updateSelectedExchange: (exchangeId: number) => void;
 };
 
@@ -28,6 +29,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
   username: "",
   last_daily_cipher_redeem: '',
   selected_exchange_id: 0,
+  updateUser: (userData) => set((state) => ({ ...state, ...userData })),
   UserTap() {
     if (get().available_energy < get().earn_per_tap) return false;
     set((state) => ({
