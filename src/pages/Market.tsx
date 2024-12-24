@@ -44,11 +44,14 @@ export default function Market() {
     };
 
     const { missionTypes, totalReferals } = uesStore();
-    const [activeType, setActiveType] = useState(missionTypes?.[0]);
+    const [activeType, setActiveType] = useState(missionTypes?.[0] || null);
     const [openComboDrawer, setOpenComboDrawer] = useState(false);
-
     const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
-
+    useEffect(() => {
+        if (missionTypes?.length && !activeType) {
+            setActiveType(missionTypes[0]); // Set a default type
+        }
+    }, [missionTypes]);
     const missions = useQuery({
         queryKey: ["/clicker/missions", activeType?.id],
         queryFn: () =>
