@@ -11,12 +11,12 @@ import { uesStore } from "./store";
 import { useDebounce } from "@uidotdev/usehooks";
 import { toast } from "react-toastify";
 import useTelegramInitData from "./hooks/useTelegramInitData";
-import PlayOnYourMobile from "./pages/PlayOnYourMobile";
+// import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 
 const webApp = window?.Telegram.WebApp;
-const isDisktop = import.meta.env.DEV
-  ? false
-  : Telegram.WebApp.platform === "tdesktop";
+// const isDisktop = import.meta.env.DEV
+//   ? false
+//   : Telegram.WebApp.platform === "tdesktop";
 // console.log(isDisktop)
 function App() {
   const userStore = useUserStore();
@@ -118,7 +118,7 @@ function App() {
     signIn().then(() => setShowSplashScreen(false));
   }, [user]);
 
-  if (!user || isDisktop) return <PlayOnYourMobile />;
+  // if (!user || isDisktop) return <PlayOnYourMobile />;
 
   if (showSplashScreen) return <SplashScreen />;
 
