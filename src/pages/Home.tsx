@@ -6,7 +6,7 @@ import UserGameDetails from "@/components/UserGameDetails";
 // import { cn, compactNumber } from "@/lib/utils";
 import { uesStore } from "@/store";
 import Header from "@/components/Header";
-import DailyCipher from "@/components/DailyCipher";
+// import DailyCipher from "@/components/DailyCipher";
 
 
 export default function Home() {
@@ -68,7 +68,7 @@ export default function Home() {
           ></div>
         </div> */}
       </div>
-      <DailyCipher />
+      {/* <DailyCipher /> */}
       <UserTap />
     </div>
   );
