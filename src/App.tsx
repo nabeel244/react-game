@@ -22,7 +22,7 @@ function App() {
   const { levels, levelUp } = uesStore();
   const { user, start_param } = useTelegramInitData();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
-  const [isFirstLoad, setIsFirstLoad] = useState(false);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const balance = useDebounce(userStore.balance, 1000);
 
   useEffect(() => {
@@ -122,7 +122,7 @@ function App() {
   if (showSplashScreen) return <SplashScreen />;
 
   if (isFirstLoad)
-    return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
+    // return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
 
   return <RouterProvider router={router} />;
 }
