@@ -90,7 +90,7 @@ const DailyCipher: React.FC = () => {
           }`}
           disabled={isSubmitting}
           >
-             {isSubmitting ? "Submitting..." : "Submit"}
+             {isSubmitting ? "Submitting..." : "Submit"} 
           </Button>
       </form>
     </div>
