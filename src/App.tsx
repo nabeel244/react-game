@@ -2,7 +2,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import { useEffect, useState } from "react";
 import SplashScreen from "./components/partials/SplashScreen";
-import FirstTimeScreen from "./components/partials/FirstTimeScreen";
+// import FirstTimeScreen from "./components/partials/FirstTimeScreen";
 import { $http, setBearerToken } from "./lib/http";
 import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
 import { useUserStore } from "./store/user-store";
