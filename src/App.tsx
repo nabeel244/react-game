@@ -7,17 +7,16 @@ import { $http, setBearerToken } from "./lib/http";
 import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
 import { useUserStore } from "./store/user-store";
 import { uesStore } from "./store";
-// import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 import { useDebounce } from "@uidotdev/usehooks";
 import { toast } from "react-toastify";
 import useTelegramInitData from "./hooks/useTelegramInitData";
-// import PlayOnYourMobile from "./pages/PlayOnYourMobile";
+import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 
 const webApp = window?.Telegram.WebApp;
-// const isDisktop = import.meta.env.DEV
-//   ? false
-//   : Telegram.WebApp.platform === "tdesktop";
-// console.log(isDisktop)
+const isDisktop = import.meta.env.DEV
+  ? false
+  : Telegram.WebApp.platform === "tdesktop";
+console.log(isDisktop, 'this is desktop')
 function App() {
   const userStore = useUserStore();
   const { levels, levelUp } = uesStore();
@@ -118,7 +117,7 @@ function App() {
     signIn().then(() => setShowSplashScreen(false));
   }, [user]);
 
-  // if (!user || isDisktop) return <PlayOnYourMobile />;
+  if (!user || isDisktop) return <PlayOnYourMobile />;
 
   if (showSplashScreen) return <SplashScreen />;
 
