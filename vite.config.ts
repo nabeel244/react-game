@@ -15,7 +15,8 @@ export default defineConfig({
     proxy: {
       "/api": {
         // target: "http://clicker-game-api.me",
-        target: "http://18.221.208.111:8000",
+        // target: "http://18.221.208.111:8000",
+        target: "https://api1.ideascan.io",
         changeOrigin: true,
       },
     },
