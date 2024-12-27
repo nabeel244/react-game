@@ -25,8 +25,4 @@ export default defineConfig({
       },
     },
   },
-  build: {
-    target: "es2015", // Transpile for compatibility with older browsers
-    outDir: "dist",
-  },
 });
