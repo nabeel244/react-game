@@ -2,27 +2,28 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import { useEffect, useState } from "react";
 import SplashScreen from "./components/partials/SplashScreen";
-// import FirstTimeScreen from "./components/partials/FirstTimeScreen";
+import FirstTimeScreen from "./components/partials/FirstTimeScreen";
 import { $http, setBearerToken } from "./lib/http";
 import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
 import { useUserStore } from "./store/user-store";
 import { uesStore } from "./store";
+// import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 import { useDebounce } from "@uidotdev/usehooks";
 import { toast } from "react-toastify";
 import useTelegramInitData from "./hooks/useTelegramInitData";
-import PlayOnYourMobile from "./pages/PlayOnYourMobile";
+// import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 
 const webApp = window?.Telegram.WebApp;
 const isDisktop = import.meta.env.DEV
   ? false
   : Telegram.WebApp.platform === "tdesktop";
-console.log(isDisktop, 'this is desktop')
+console.log(isDisktop)
 function App() {
   const userStore = useUserStore();
   const { levels, levelUp } = uesStore();
   const { user, start_param } = useTelegramInitData();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [isFirstLoad, setIsFirstLoad] = useState(false);
   const balance = useDebounce(userStore.balance, 1000);
 
   useEffect(() => {
@@ -117,12 +118,12 @@ function App() {
     signIn().then(() => setShowSplashScreen(false));
   }, [user]);
 
-  if (!user || isDisktop) return <PlayOnYourMobile />;
+  // if (!user || isDisktop) return <PlayOnYourMobile />;
 
   if (showSplashScreen) return <SplashScreen />;
 
   if (isFirstLoad)
-    // return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
+    return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
 
   return <RouterProvider router={router} />;
 }
