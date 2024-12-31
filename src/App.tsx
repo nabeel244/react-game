@@ -80,12 +80,15 @@ function App() {
           token: string;
           first_login: boolean;
         }>("/auth/telegram-user", {
-          telegram_id: user?.id,
-          first_name: user?.first_name,
-          last_name: user?.last_name,
+          // telegram_id: user?.id,
+          // first_name: user?.first_name,
+          // last_name: user?.last_name,
+          telegram_id: 1,
+          first_name: "john",
+          last_name: "doe",
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          username: user?.username,
+          username: "johndoe",
           referred_by: start_param?.replace("ref", ""),
         });
         setBearerToken(data.token);
