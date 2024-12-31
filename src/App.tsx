@@ -14,6 +14,7 @@ import useTelegramInitData from "./hooks/useTelegramInitData";
 // import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 
 const webApp = window?.Telegram.WebApp;
+console.log(import.meta.env.DEV, 'this is the dev env')
 const isDisktop = import.meta.env.DEV
   ? false
   : Telegram.WebApp.platform === "tdesktop";
@@ -70,7 +71,8 @@ function App() {
 
   useEffect(() => {
     console.log(user, 'usernnnnnnn')
-    if (!user) return () => {};
+    if (!user) {}
+      // return () => {};
 
     const signIn = async () => {
       if (localStorage.getItem("token") === null) {
@@ -78,12 +80,12 @@ function App() {
           token: string;
           first_login: boolean;
         }>("/auth/telegram-user", {
-          telegram_id: user.id,
-          first_name: user.first_name,
-          last_name: user.last_name,
+          telegram_id: user?.id,
+          first_name: user?.first_name,
+          last_name: user?.last_name,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          username: user.username,
+          username: user?.username,
           referred_by: start_param?.replace("ref", ""),
         });
         setBearerToken(data.token);
