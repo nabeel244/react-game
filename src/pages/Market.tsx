@@ -150,7 +150,6 @@ export default function Market() {
                                                 </p>
                                                 <Price
                                                     amount={
-                                                        mission.production_per_hour ||
                                                         `+${mission.next_level?.production_per_hour || 0}`
                                                     }
                                                     className=" text-[9px] text-black"
