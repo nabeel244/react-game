@@ -18,4 +18,6 @@ export type Mission = {
   next_level?: MissionLevel;
   required_user_level?: number;
   required_friends_invitation?: number;
+  tab_show: string;
+  cooldown: string;
 };

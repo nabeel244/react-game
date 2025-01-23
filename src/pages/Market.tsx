@@ -61,6 +61,7 @@ export default function Market() {
         staleTime: 1000 * 60,
         enabled: !!activeType?.id,
     });
+
     return (
         <div
             className="flex-1 px-5 pb-20 bg-center bg-cover"
@@ -93,7 +94,7 @@ export default function Market() {
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-4 py-1 rounded-md font-bold text-sm ${activeTab === tab ? "bg-[#6D00DA] text-white" : "text-gray-300"
+                        className={`px-4 py-1 rounded-md font-bold text-[12px] ${activeTab === tab ? "bg-[#6D00DA] text-white" : "text-gray-300"
                             }`}
                     >
                         {tab}
@@ -101,15 +102,17 @@ export default function Market() {
                 ))}
             </div>
             <div className="p-4 bg-[#3e0074] rounded-md text-white">
-                {activeTab === "Markets" && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {missions.isLoading ? (
-                            <div className="flex items-center justify-center h-full col-span-2 mt-6">
-                                <Loader2Icon className="w-12 h-12 animate-spin text-primary" />
-                            </div>
-                        ) : (
-                            missions.data &&
-                            missions.data.map((mission, key) => (
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {missions.isLoading ? (
+                        <div className="flex items-center justify-center h-full col-span-2 mt-6">
+                            <Loader2Icon className="w-12 h-12 animate-spin text-primary" />
+                        </div>
+                    ) : (
+                        missions.data &&
+                        missions.data
+                            .filter((mission) => mission.tab_show === activeTab) // Filter missions based on the active tab
+                            .map((mission, key) => (
                                 <div
                                     key={key}
                                     className={cn(
@@ -119,8 +122,7 @@ export default function Market() {
                                                 (mission?.required_user_level &&
                                                     mission.required_user_level > user.level!.level) ||
                                                 (mission.required_friends_invitation &&
-                                                    mission.required_friends_invitation >
-                                                    totalReferals),
+                                                    mission.required_friends_invitation > totalReferals),
                                         }
                                     )}
                                     onClick={() => {
@@ -142,24 +144,37 @@ export default function Market() {
                                             alt={mission.name}
                                             className="object-contain w-16 h-16"
                                         />
-                                        <div className="flex flex-col ">
-                                            <p className="text-[12px]">{mission.name}</p>
-                                            <div className="bg-gradient-to-r from-[#03F6F4] to-[#37BBFE] rounded-md p-1 mt-1">
-                                                <p className="text-[9px] text-center text-black">
+                                        <div className="flex flex-col">
+                                            <div>
+                                                <p className="text-[10px]">{mission.name}</p>
+                                            </div>
+                                            <div className="bg-gradient-to-r from-[#03F6F4] to-[#37BBFE] rounded-md p-1 mt-1 w-[90px]">
+                                                <p className="text-[8px] text-center text-black">
                                                     Profit per hour
                                                 </p>
                                                 <Price
-                                                    amount={
-                                                        `+${mission.next_level?.production_per_hour || 0}`
-                                                    }
-                                                    className=" text-[9px] text-black"
+                                                    amount={`+${mission.next_level?.production_per_hour || 0}`}
+                                                    className="text-[9px] text-black"
                                                 />
                                             </div>
                                         </div>
+
+                                        {/* <div className="flex flex-col">
+                                                <p className="text-[10px]">{mission.name}</p>
+                                            <div className="bg-gradient-to-r from-[#03F6F4] to-[#37BBFE] rounded-md p-1 mt-1">
+                                                <p className="text-[8px] text-center text-black">
+                                                    Profit per hour
+                                                </p>
+                                                <Price
+                                                    amount={`+${mission.next_level?.production_per_hour || 0}`}
+                                                    className="text-[9px] text-black"
+                                                />
+                                            </div>
+                                        </div> */}
                                     </div>
                                     <div className="w-full h-[1px] bg-[#03F6F4]"></div>
                                     {mission.next_level && (
-                                        <div className="mt-2 border-t border-solid border-white/5 border-[#03F6F4] ">
+                                        <div className="mt-2 border-t border-solid border-white/5 border-[#03F6F4]">
                                             <div className="flex space-x-3 justify-between">
                                                 <p className="w-16 text-xs font-bold">
                                                     LEVEL {mission.next_level?.level}
@@ -173,13 +188,11 @@ export default function Market() {
                                                             className="object-contain w-5 h-5"
                                                         />
                                                         <span>
-                                                            Mission required lvl{" "}
-                                                            {mission.required_user_level}
+                                                            Mission required lvl {mission.required_user_level}
                                                         </span>
                                                     </div>
                                                 ) : mission.required_friends_invitation &&
-                                                    mission.required_friends_invitation >
-                                                    totalReferals ? (
+                                                    mission.required_friends_invitation > totalReferals ? (
                                                     <div className="flex items-center gap-2 text-[10px]">
                                                         <img
                                                             src="/images/lock.png"
@@ -204,11 +217,8 @@ export default function Market() {
                                     )}
                                 </div>
                             ))
-                        )}
-                    </div>
-                )}
-
-
+                    )}
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     {cards
                         .filter((card) => card.category === activeTab)
@@ -236,7 +246,7 @@ export default function Market() {
                                         <p className="text-sm">{card.title}</p>
                                         <div
                                             className="bg-gradient-to-r from-[#03F6F4] to-[#37BBFE] rounded-md p-1 mt-1"
-                                          
+
                                         >
                                             <p className="text-[9px] text-center text-black">Profit per hour</p>
                                             <div className="inline-flex items-center text-black">
